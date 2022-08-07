@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './likes.component.html',
   styleUrls: ['./likes.component.scss'],
 })
-export class LikesComponent implements OnInit {
+export default class LikesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {

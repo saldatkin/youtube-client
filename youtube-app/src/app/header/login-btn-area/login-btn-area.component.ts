@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login-btn-area.component.html',
   styleUrls: ['./login-btn-area.component.scss'],
 })
-export class LoginBtnAreaComponent implements OnInit {
+export default class LoginBtnAreaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {

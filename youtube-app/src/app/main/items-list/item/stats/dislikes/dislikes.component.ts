@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dislikes.component.html',
   styleUrls: ['./dislikes.component.scss'],
 })
-export class DislikesComponent implements OnInit {
+export default class DislikesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {

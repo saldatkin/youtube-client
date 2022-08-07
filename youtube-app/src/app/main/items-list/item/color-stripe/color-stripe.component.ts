@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './color-stripe.component.html',
   styleUrls: ['./color-stripe.component.scss'],
 })
-export class ColorStripeComponent implements OnInit {
+export default class ColorStripeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
