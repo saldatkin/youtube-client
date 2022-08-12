@@ -10,4 +10,8 @@ export default class InputComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  onSubmit(){
+    
+  }
 }

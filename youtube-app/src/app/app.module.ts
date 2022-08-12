@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { RouterModule } from '@angular/router';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import InputComponent from './header/search-form/input/input.component';
@@ -17,6 +18,7 @@ import CommentsComponent from './main/items-list/item/stats/comments/comments.co
 import ItemCaptionComponent from './main/items-list/item/item-caption/item-caption.component';
 import MoreBtnComponent from './main/items-list/item/more-btn/more-btn.component';
 import ColorStripeComponent from './main/items-list/item/color-stripe/color-stripe.component';
+import { HeaderComponent } from './header/header/header.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,14 @@ import ColorStripeComponent from './main/items-list/item/color-stripe/color-stri
     ItemCaptionComponent,
     MoreBtnComponent,
     ColorStripeComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot([
+      { path: '', component: HeaderComponent},
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent],

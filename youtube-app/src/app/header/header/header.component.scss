@@ -1,0 +1,48 @@
+.wrapper{
+  width: 70rem;
+  margin: 0 auto;
+}
+
+
+header{
+  height: 5rem;
+  background-color: #E5E5E5;
+
+  .header-wrapper{
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    .empty-space{
+      width: 10rem;
+    }
+    app-login-btn-area{
+      width: 10rem;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .search-area{
+    display: grid;
+    grid-auto-flow: column;
+    width: 50rem;
+    grid-template-columns: 1fr 2fr  1fr;
+    align-items: center;
+    justify-items: center;
+    app-logo{
+      justify-self: flex-end;
+    }
+    app-input{
+      height: 1.5rem;
+      border: none;
+    }
+    app-filter-btn{
+      justify-self: flex-start;
+    }
+  }
+  .login-area{
+    justify-self: flex-end;
+  }
+
+}
+
