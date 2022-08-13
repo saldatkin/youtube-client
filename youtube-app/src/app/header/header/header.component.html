@@ -1,20 +1,27 @@
 <header>
-  <div class="header-wrapper wrapper">
-    <div class="empty-space">
+  <div class="wrapper">
+    <div class="header-wrapper">
+      <div class="empty-space">
+      </div>
+      <div class="search-area">
+        <app-logo>
+
+        </app-logo>
+        <app-input>
+
+        </app-input>
+        <app-filter-btn (click)="toggleFiltersDisplay()">
+
+        </app-filter-btn>
+      </div>
+      <app-login-btn-area>
+
+      </app-login-btn-area>
     </div>
-    <div class="search-area">
-      <app-logo>
-
-      </app-logo>
-      <app-input>
-
-      </app-input>
-      <app-filter-btn>
-
-      </app-filter-btn>
-    </div>
-    <app-login-btn-area>
-
-    </app-login-btn-area>
   </div>
 </header>
+<div class="filters-wrapper" *ngIf="isFiltersActive">
+  <app-filters class="wrapper">
+
+  </app-filters>
+</div>

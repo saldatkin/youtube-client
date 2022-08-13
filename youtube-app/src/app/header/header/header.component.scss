@@ -1,6 +1,9 @@
 .wrapper{
   width: 70rem;
+  height: 100%;
   margin: 0 auto;
+  border: 1px solid skyblue;
+  color: red;
 }
 
 
@@ -43,6 +46,12 @@ header{
   .login-area{
     justify-self: flex-end;
   }
-
 }
 
+
+.filters-wrapper{
+  margin: 0;
+  padding: 0;
+  background-color: #E5E5E5;
+  border: 1px solid yellowgreen;
+}
