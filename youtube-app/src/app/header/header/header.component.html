@@ -7,7 +7,7 @@
         <app-logo>
 
         </app-logo>
-        <app-input>
+        <app-input (outSubmitForm)="headerSendResponse($event)">
 
         </app-input>
         <app-filter-btn (click)="toggleFiltersDisplay()">

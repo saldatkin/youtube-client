@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchItem } from 'src/app/models/search-item';
-import { response } from '../response';
 
 @Component({
   selector: 'app-items-list',
@@ -8,7 +7,7 @@ import { response } from '../response';
   styleUrls: ['./items-list.component.scss'],
 })
 export default class ItemsListComponent implements OnInit {
-  items: SearchItem[] = response.items;
+  @Input() itemsList?: SearchItem[];
 
   someValueFromParent: string = 'parentValue';
 

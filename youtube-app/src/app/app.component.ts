@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchItem } from './models/search-item';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export default class AppComponent {
   title = 'youtube-app';
+
+  appItemsList: SearchItem[] = [];
+
+  setAppItems(value: SearchItem[]) {
+    this.appItemsList = value;
+  }
 }

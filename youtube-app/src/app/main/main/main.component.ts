@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchItem } from 'src/app/models/search-item';
 
 @Component({
   selector: 'app-main',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export default class MainComponent implements OnInit {
   constructor() { }
+
+  @Input() mainItemsList?: SearchItem[];
 
   ngOnInit(): void {
   }

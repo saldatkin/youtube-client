@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, EventEmitter, OnInit, Output,
+} from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { SearchItem } from 'src/app/models/search-item';
+import { response } from 'src/app/response';
 
 @Component({
   selector: 'app-input',
@@ -8,9 +13,17 @@ import { Component, OnInit } from '@angular/core';
 export default class InputComponent implements OnInit {
   constructor() { }
 
+  responseItems: SearchItem[] = response.items;
+
+  @Output() outSubmitForm = new EventEmitter<SearchItem[]>();
+
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmitForm(form: NgForm) {
+    const inputValue: string = form.value.searchInput;
+    if (inputValue !== '') {
+      this.outSubmitForm.emit(this.responseItems);
+    }
   }
 }

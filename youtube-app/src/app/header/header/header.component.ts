@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, EventEmitter, OnInit, Output,
+} from '@angular/core';
+import { SearchItem } from 'src/app/models/search-item';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export default class HeaderComponent implements OnInit {
   constructor() { }
 
+  @Output() outHeaderResponse = new EventEmitter<SearchItem[]>();
+
   ngOnInit(): void {
   }
 
@@ -15,5 +20,9 @@ export default class HeaderComponent implements OnInit {
 
   toggleFiltersDisplay() {
     this.isFiltersActive = !this.isFiltersActive;
+  }
+
+  headerSendResponse(value: SearchItem[]) {
+    this.outHeaderResponse.emit(value);
   }
 }
