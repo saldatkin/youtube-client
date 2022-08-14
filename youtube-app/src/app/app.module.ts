@@ -14,13 +14,13 @@ import ViewsComponent from './main/items-list/item/stats/views/views.component';
 import LikesComponent from './main/items-list/item/stats/likes/likes.component';
 import DislikesComponent from './main/items-list/item/stats/dislikes/dislikes.component';
 import CommentsComponent from './main/items-list/item/stats/comments/comments.component';
-import ItemCaptionComponent from './main/items-list/item/item-caption/item-caption.component';
 import MoreBtnComponent from './main/items-list/item/more-btn/more-btn.component';
 import ColorStripeComponent from './main/items-list/item/color-stripe/color-stripe.component';
 import HeaderComponent from './header/header/header.component';
 import ItemsListComponent from './main/items-list/items-list/items-list.component';
 import MainComponent from './main/main/main.component';
 import ItemComponent from './main/items-list/item/item/item.component';
+import TitleComponent from './main/items-list/item/title/title.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +36,13 @@ import ItemComponent from './main/items-list/item/item/item.component';
     LikesComponent,
     DislikesComponent,
     CommentsComponent,
-    ItemCaptionComponent,
     MoreBtnComponent,
     ColorStripeComponent,
     HeaderComponent,
     ItemsListComponent,
     MainComponent,
     ItemComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,

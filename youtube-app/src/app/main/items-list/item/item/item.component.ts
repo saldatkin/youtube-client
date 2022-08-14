@@ -19,6 +19,8 @@ export default class ItemComponent implements OnInit {
 
   @Input() itemComments?: string;
 
+  @Input() itemTitle?: string;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -2,12 +2,17 @@
   width: 70rem;
   margin: 2rem auto 0;
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 .item{
   display: grid;
-  border: 1px solid orangered;
+  justify-items: center;
+  background-color: #e5e5e5;
+  /*border: 1px solid orangered;*/
+  border-bottom: 0.5rem solid darkturquoise;
+  /*border-color: darkturquoise;*/
   border-radius: 1rem;
   overflow: hidden;
 }

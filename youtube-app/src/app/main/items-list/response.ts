@@ -1,6 +1,6 @@
 import { SearchResponse } from 'src/app/models/search-response';
 
-
+// eslint-disable-next-line import/prefer-default-export
 export const response: SearchResponse = {
   kind: 'youtube#videoListResponse',
   etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/Cmodw7c5XPTM8Yg3kMXelihxek4"',
