@@ -21,8 +21,19 @@ export default class ItemComponent implements OnInit {
 
   @Input() itemTitle?: string;
 
+  @Input() itemDate?: string;
+
+  @Input() item?: SearchItem;
+
+  publishedDate?: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.publishedDate = this.item?.snippet.publishedAt;
+  }
+
+  getPublishedDate(): string | undefined {
+    return this.publishedDate;
   }
 }

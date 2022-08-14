@@ -22,6 +22,7 @@ import ItemsListComponent from './main/items-list/items-list/items-list.componen
 import MainComponent from './main/main/main.component';
 import ItemComponent from './main/items-list/item/item/item.component';
 import TitleComponent from './main/items-list/item/title/title.component';
+import BorderColorDirective from './main/items-list/items-list/border-color.directive';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import TitleComponent from './main/items-list/item/title/title.component';
     MainComponent,
     ItemComponent,
     TitleComponent,
+    BorderColorDirective,
   ],
   imports: [
     BrowserModule,

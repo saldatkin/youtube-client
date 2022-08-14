@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-color-stripe',
@@ -8,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export default class ColorStripeComponent implements OnInit {
   constructor() { }
 
+  @Input() datePublish?: string;
+
+  @Input() publishedDate?: string;
+
+  publicationDate?: string;
+
   ngOnInit(): void {
+    this.publicationDate = this.publishedDate;
   }
 }

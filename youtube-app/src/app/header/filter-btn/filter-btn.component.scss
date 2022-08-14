@@ -1,16 +1,17 @@
 .filter-btn{
- /* position: absolute;
-  top: 50%;
-  transform: translateY(-50%); */
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
   border-radius: 0.3rem;
   background-color:#2F80ED;
   border: none;
-  cursor: pointer;
+  box-shadow: 0.1rem 0 0.2rem #2F80ED;
   justify-items: center;
-  .filter-btn-vector{
+  transition: 0.2s;
+  cursor: pointer;
+}
 
-  }
+.filter-btn:hover {
+  transform: scale(1.05);
+  background-color: #5EA2FF;
 }

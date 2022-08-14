@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SearchItem } from 'src/app/models/search-item';
-import { response } from 'src/app/response';
+import { response } from 'src/app/main/items-list/response';
 
 @Component({
   selector: 'app-input',
