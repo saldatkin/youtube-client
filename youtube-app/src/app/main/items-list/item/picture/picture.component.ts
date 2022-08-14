@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-picture',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export default class PictureComponent implements OnInit {
   constructor() { }
+
+  @Input() pictureURL?: string;
 
   ngOnInit(): void {
   }

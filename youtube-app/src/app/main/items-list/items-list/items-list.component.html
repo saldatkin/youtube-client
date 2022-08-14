@@ -1,0 +1,10 @@
+<div class="items-list">
+  <app-item
+   [itemPicURL]="item.snippet.thumbnails.maxres.url"
+   [itemViews]="item.statistics.viewCount"
+   [itemLikes]="item.statistics.likeCount"
+   [itemDislikes]="item.statistics.dislikeCount"
+   [itemComments]="item.statistics.commentCount"
+   class="item" *ngFor="let item of items">
+  </app-item>
+</div>

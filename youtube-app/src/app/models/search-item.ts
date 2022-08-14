@@ -6,7 +6,7 @@ export interface SearchItem {
   statistics: IStatistics
 }
 
-interface ISnippet {
+export interface ISnippet {
   publishedAt: Date | string,
   channelId: string,
   title: string,
@@ -22,6 +22,7 @@ interface ISnippet {
   tags: string[];
   categoryId: string,
   liveBroadcastContent: string,
+  defaultLanguage?: string;
   localized: {
     title: string,
     description: string

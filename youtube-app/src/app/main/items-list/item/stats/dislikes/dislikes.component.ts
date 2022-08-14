@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dislikes',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export default class DislikesComponent implements OnInit {
   constructor() { }
+
+  @Input() dislikesCount?: string;
 
   ngOnInit(): void {
   }
