@@ -9,6 +9,6 @@
    [itemComments]="item.statistics.commentCount"
    [itemTitle]="item.snippet.title"
    [itemDate]="item.snippet.publishedAt"
-   class="item" *ngFor="let item of itemsList">
+   class="item"  *ngFor="let item of itemsList | filter : formInput">
   </app-item>
 </div>

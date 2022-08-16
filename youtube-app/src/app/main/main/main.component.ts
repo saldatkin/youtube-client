@@ -11,6 +11,8 @@ export default class MainComponent implements OnInit {
 
   @Input() mainItemsList?: SearchItem[];
 
+  @Input() formInput?: string;
+
   ngOnInit(): void {
   }
 }

@@ -13,10 +13,14 @@ export default class HeaderComponent implements OnInit {
 
   @Output() outHeaderResponse = new EventEmitter<SearchItem[]>();
 
-  ngOnInit(): void {
-  }
+  @Output() outHeaderFormInput = new EventEmitter<string>();
+
+  formInput?: string;
 
   isFiltersActive: boolean = false;
+
+  ngOnInit(): void {
+  }
 
   toggleFiltersDisplay() {
     this.isFiltersActive = !this.isFiltersActive;
@@ -24,5 +28,10 @@ export default class HeaderComponent implements OnInit {
 
   headerSendResponse(value: SearchItem[]) {
     this.outHeaderResponse.emit(value);
+  }
+
+  getFromInput(input: string) {
+    this.formInput = input;
+    this.outHeaderFormInput.emit(this.formInput);
   }
 }

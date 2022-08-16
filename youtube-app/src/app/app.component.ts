@@ -9,9 +9,15 @@ import { SearchItem } from './models/search-item';
 export default class AppComponent {
   title = 'youtube-app';
 
-  appItemsList: SearchItem[] = [];
+  appItemsList: SearchItem[] | undefined = [];
+
+  formInput?: string;
 
   setAppItems(value: SearchItem[]) {
     this.appItemsList = value;
+  }
+
+  sendFormInput(input: string) {
+    this.formInput = input;
   }
 }

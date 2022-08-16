@@ -20,7 +20,7 @@
     <a href="" class="filter-link">
       word or sentence
     </a>
-    <input type="text">
+    <input type="text" [ngModel]="inputVal" (ngModelChange)="onInputChange($event)" (formInput)="inputVal">
   </div>
 </div>
  <!--

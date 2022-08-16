@@ -9,6 +9,10 @@ import { SearchItem } from 'src/app/models/search-item';
 export default class ItemsListComponent implements OnInit {
   @Input() itemsList?: SearchItem[];
 
+  @Input() formInput?: string;
+
+  title:string = '';
+
   someValueFromParent: string = 'parentValue';
 
   constructor() { }

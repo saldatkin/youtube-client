@@ -15,6 +15,8 @@ export default class InputComponent implements OnInit {
 
   responseItems: SearchItem[] = response.items;
 
+  filterBy: any;
+
   @Output() outSubmitForm = new EventEmitter<SearchItem[]>();
 
   ngOnInit(): void {

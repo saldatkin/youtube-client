@@ -1,9 +1,9 @@
 <router-outlet>
 
 </router-outlet>
-<app-header (outHeaderResponse)="setAppItems($event)">
+<app-header (outHeaderResponse)="setAppItems($event)" (outHeaderFormInput)="sendFormInput($event)">
 
 </app-header>
-<app-main [mainItemsList]="appItemsList">
+<app-main [mainItemsList]="appItemsList" [formInput]="formInput">
 
 </app-main>

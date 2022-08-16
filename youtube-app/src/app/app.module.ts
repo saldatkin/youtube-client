@@ -23,6 +23,8 @@ import MainComponent from './main/main/main.component';
 import ItemComponent from './main/items-list/item/item/item.component';
 import TitleComponent from './main/items-list/item/title/title.component';
 import BorderColorDirective from './main/items-list/items-list/border-color.directive';
+import SortPipe from './pipes/sort.pipe';
+import FilterWordPipe from './pipes/filter-word.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import BorderColorDirective from './main/items-list/items-list/border-color.dire
     ItemComponent,
     TitleComponent,
     BorderColorDirective,
+    SortPipe,
+    FilterWordPipe,
   ],
   imports: [
     BrowserModule,

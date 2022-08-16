@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, EventEmitter, OnInit, Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-filters',
@@ -8,6 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export default class FiltersComponent implements OnInit {
   constructor() { }
 
+  @Output() outInputVal = new EventEmitter<string>();
+
+  inputVal?:string;
+
   ngOnInit(): void {
+  }
+
+  onInputChange(inputValue:string) {
+    this.inputVal = inputValue;
+    this.outInputVal.emit(inputValue);
   }
 }
