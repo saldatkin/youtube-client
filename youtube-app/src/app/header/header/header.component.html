@@ -21,7 +21,8 @@
   </div>
 </header>
 <div class="filters-wrapper" *ngIf="isFiltersActive">
-  <app-filters class="wrapper" (outInputVal)="getFromInput($event)">
-
+  <app-filters class="wrapper"
+  (outInputVal)="getFromInput($event)"
+  (outSortState)="getSortState($event)">
   </app-filters>
 </div>

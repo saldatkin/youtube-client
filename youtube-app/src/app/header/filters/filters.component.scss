@@ -5,6 +5,16 @@
   display: grid;
   grid-auto-flow: column;
   justify-items: center;
+  .sort-btn{
+    border: none;
+    background: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .sort-btn:hover{
+    color: rgb(0, 81, 255, 0.8);
+  }
 }
 .filters-caption{
   justify-self: flex-end;

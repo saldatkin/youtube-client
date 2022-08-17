@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchItem } from './models/search-item';
+import { SortState } from './models/sort-state';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,11 @@ import { SearchItem } from './models/search-item';
 export default class AppComponent {
   title = 'youtube-app';
 
-  appItemsList: SearchItem[] | undefined = [];
+  appItemsList?: SearchItem[];
 
   formInput?: string;
+
+  sortState?: SortState;
 
   setAppItems(value: SearchItem[]) {
     this.appItemsList = value;
@@ -19,5 +22,9 @@ export default class AppComponent {
 
   sendFormInput(input: string) {
     this.formInput = input;
+  }
+
+  sendSortState(sortState: SortState) {
+    this.sortState = sortState;
   }
 }

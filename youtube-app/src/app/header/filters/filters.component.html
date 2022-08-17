@@ -7,20 +7,26 @@
     Sorting by:
   </div>
   <div class="div-filter">
-    <a href="" class="filter-link">
+    <button class="filter-link sort-btn"
+    (click)="onSortButtonClick('date')"
+    (sortState)="sortState">
       date
-    </a>
+    </button>
   </div>
   <div class="div-filter">
-    <a href="" class="filter-link">
+    <button class="filter-link sort-btn"
+    (click)="onSortButtonClick('views')">
       count of views
-    </a>
+    </button>
   </div>
   <div class="div-filter">
     <a href="" class="filter-link">
       word or sentence
     </a>
-    <input type="text" [ngModel]="inputVal" (ngModelChange)="onInputChange($event)" (formInput)="inputVal">
+    <input type="text"
+    [ngModel]="inputVal"
+    (ngModelChange)="onInputChange($event)"
+    (formInput)="inputVal">
   </div>
 </div>
  <!--

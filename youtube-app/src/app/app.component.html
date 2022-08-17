@@ -1,9 +1,15 @@
 <router-outlet>
 
 </router-outlet>
-<app-header (outHeaderResponse)="setAppItems($event)" (outHeaderFormInput)="sendFormInput($event)">
+<app-header
+(outHeaderResponse)="setAppItems($event)"
+(outHeaderFormInput)="sendFormInput($event)"
+(outHeaderSortState)="sendSortState($event)">
 
 </app-header>
-<app-main [mainItemsList]="appItemsList" [formInput]="formInput">
+<app-main
+[mainItemsList]="appItemsList"
+[formInput]="formInput"
+[sortState]="sortState">
 
 </app-main>

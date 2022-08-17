@@ -2,6 +2,7 @@ import {
   Component, EventEmitter, OnInit, Output,
 } from '@angular/core';
 import { SearchItem } from 'src/app/models/search-item';
+import { SortState } from 'src/app/models/sort-state';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,13 @@ export default class HeaderComponent implements OnInit {
 
   @Output() outHeaderFormInput = new EventEmitter<string>();
 
-  formInput?: string;
+  @Output() outHeaderSortState = new EventEmitter<SortState>();
 
   isFiltersActive: boolean = false;
+
+  formInput?: string;
+
+  sortState!: SortState;
 
   ngOnInit(): void {
   }
@@ -33,5 +38,10 @@ export default class HeaderComponent implements OnInit {
   getFromInput(input: string) {
     this.formInput = input;
     this.outHeaderFormInput.emit(this.formInput);
+  }
+
+  getSortState(sortState: SortState) {
+    this.sortState = sortState;
+    this.outHeaderSortState.emit(this.sortState);
   }
 }
