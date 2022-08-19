@@ -34,7 +34,6 @@ export default class FiltersComponent implements OnInit {
 
     sort = {
       type,
-      isActive: true,
       order: this.getOrder(sort),
     };
 

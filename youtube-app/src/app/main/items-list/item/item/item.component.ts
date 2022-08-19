@@ -7,7 +7,6 @@ import { SearchItem } from 'src/app/models/search-item';
   styleUrls: ['./item.component.scss'],
 })
 export default class ItemComponent implements OnInit {
-  @Input() itemsFromItemsList?: SearchItem[];
 
   @Input() itemPicURL?: string;
 

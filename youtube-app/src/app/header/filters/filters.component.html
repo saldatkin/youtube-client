@@ -1,7 +1,3 @@
-<!--
-<div class="filters-wrapper">
-  <app-filters class="wrapper" *ngIf="isFiltersActive">
-  -->
 <div class="filters">
   <div class="filters-caption">
     Sorting by:
@@ -20,17 +16,12 @@
     </button>
   </div>
   <div class="div-filter">
-    <a href="" class="filter-link">
+    <p class="filter-link">
       word or sentence
-    </a>
+    </p>
     <input type="text"
     [ngModel]="inputVal"
-    (ngModelChange)="onInputChange($event)"
-    (formInput)="inputVal">
+    (ngModelChange)="onInputChange($event)">
   </div>
 </div>
- <!--
-  </app-filters>
-</div>
--->
 
