@@ -1,0 +1,36 @@
+<!--
+<div class="filters-wrapper">
+  <app-filters class="wrapper" *ngIf="isFiltersActive">
+  -->
+<div class="filters">
+  <div class="filters-caption">
+    Sorting by:
+  </div>
+  <div class="div-filter">
+    <button class="filter-link sort-btn"
+    (click)="onSortButtonClick('date')"
+    (sortState)="sortState">
+      date
+    </button>
+  </div>
+  <div class="div-filter">
+    <button class="filter-link sort-btn"
+    (click)="onSortButtonClick('views')">
+      count of views
+    </button>
+  </div>
+  <div class="div-filter">
+    <a href="" class="filter-link">
+      word or sentence
+    </a>
+    <input type="text"
+    [ngModel]="inputVal"
+    (ngModelChange)="onInputChange($event)"
+    (formInput)="inputVal">
+  </div>
+</div>
+ <!--
+  </app-filters>
+</div>
+-->
+
