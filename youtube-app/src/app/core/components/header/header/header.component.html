@@ -1,0 +1,59 @@
+  <header>
+    <div class="wrapper">
+      <div class="header-wrapper">
+        <div class="empty-space">
+        </div>
+        <div class="search-area">
+          <app-logo>
+
+          </app-logo>
+          <app-input>
+
+          </app-input>
+          <app-filter-btn (click)="toggleFiltersDisplay()">
+
+          </app-filter-btn>
+        </div>
+        <app-login-btn-area>
+
+        </app-login-btn-area>
+      </div>
+    </div>
+  </header>
+  <div class="filters-wrapper" *ngIf="isFiltersActive">
+    <app-filters class="wrapper">
+    </app-filters>
+  </div>
+
+
+<!--
+
+  <header>
+    <div class="wrapper">
+      <div class="header-wrapper">
+        <div class="empty-space">
+        </div>
+        <div class="search-area">
+          <app-logo>
+
+          </app-logo>
+          <app-input (outSubmitForm)="headerSendResponse($event)">
+
+          </app-input>
+          <app-filter-btn (click)="toggleFiltersDisplay()">
+
+          </app-filter-btn>
+        </div>
+        <app-login-btn-area>
+
+        </app-login-btn-area>
+      </div>
+    </div>
+  </header>
+  <div class="filters-wrapper" *ngIf="isFiltersActive">
+    <app-filters class="wrapper"
+    (outInputVal)="getFromInput($event)"
+    (outSortState)="getSortState($event)">
+    </app-filters>
+  </div>
+-->
