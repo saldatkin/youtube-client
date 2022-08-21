@@ -5,7 +5,7 @@
       </button>
       <div class="item-card_wrapper">
         <img [src]="item.snippet.thumbnails.maxres.url" alt="" class="item-card_pic">
-        <div appBorderColor class="item-card-desc_wrapper">
+        <div appBorderColor [item]="item" class="item-card-desc_wrapper">
           <div class="item-card-title_wrapper">
             <h2 class="item-card-heading">{{ item.snippet.title }}</h2>
             <p class="item-card-publication-date_text">{{ item.snippet.publishedAt | date:'fullDate' }}</p>

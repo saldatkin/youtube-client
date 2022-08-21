@@ -1,12 +1,14 @@
 import {
   Directive, ElementRef, Input, OnInit,
 } from '@angular/core';
+import { SearchItem } from 'src/app/shared/models/search-item';
 
 @Directive({
   selector: '[appBorderColor]',
 })
 export default class BorderColorDirective implements OnInit {
   @Input() itemDate?: string;
+  @Input() item?: SearchItem;
 
   dateP?: string;
 
@@ -14,7 +16,7 @@ export default class BorderColorDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dateP = this.itemDate;
+    this.dateP = this.item?.snippet.publishedAt;
     const date: Date = new Date(this.dateP!);
     const millisecondsPassed: number = Date.now() - date.getTime();
 
