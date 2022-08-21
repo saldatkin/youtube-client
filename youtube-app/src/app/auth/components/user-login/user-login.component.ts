@@ -17,6 +17,7 @@ export class UserLoginComponent {
   onSubmitLoginForm(form: NgForm) {
     this.loginService.setLoginState(form.value.loginInput, true);
     localStorage.setItem('loginState', JSON.stringify(this.loginService.loginState));
+    this.loginService.changeCurrentIsLogged(this.loginService.loginState.isLoggedIn);
     this.router.navigateByUrl('/search');
   }
 }

@@ -13,3 +13,22 @@
   height: 1.5rem;
   margin-right: 1rem;
 }
+
+.logout_btn {
+  box-sizing: border-box;
+  margin-left: 10px;
+  width: 80px;
+  height: 24px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #2F80ED;
+  color: white;
+  box-shadow: 2px 0px 4px #2F80ED;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout_btn:hover {
+  transform: scale(1.05);
+  background-color: #5ea2ff;
+}

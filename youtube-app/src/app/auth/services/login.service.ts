@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { LoginState } from 'src/app/shared/models/login-state';
 
 @Injectable({
@@ -38,5 +39,14 @@ export class LoginService {
     * charactersLength));
     }
     return token;
+  }
+
+  private isLoggedBehavSubject = new BehaviorSubject<boolean
+  | undefined>(this.loginState.isLoggedIn);
+
+  currentIsLogged = this.isLoggedBehavSubject.asObservable();
+
+  changeCurrentIsLogged(value: boolean | undefined) {
+    this.isLoggedBehavSubject.next(value);
   }
 }

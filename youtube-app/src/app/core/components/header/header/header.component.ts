@@ -28,10 +28,4 @@ export default class HeaderComponent implements OnInit {
   toggleFiltersDisplay() {
     this.isFiltersActive = !this.isFiltersActive;
   }
-
-  onLogoutClick() {
-    this.loginService.setLoginState('', false);
-    localStorage.clear();
-    this.router.navigateByUrl('/login');
-  }
 }
