@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FilterService } from 'src/app/core/services/filter.service';
 import { SearchFormService } from 'src/app/core/services/search-form.service';
 import { SearchItem } from 'src/app/shared/models/search-item';
 import { SortState } from 'src/app/shared/models/sort-state';
@@ -11,12 +10,8 @@ import { items, response } from 'src/app/shared/response';
   styleUrls: ['./items-list.component.scss'],
 })
 export default class ItemsListComponent implements OnInit {
- /*
-  @Input() formInput?: string;
-
-  @Input() sortState?: SortState;
-*/
-  constructor(private filterService: FilterService,
+ 
+  constructor(
     private searchFormService: SearchFormService) { }
 
   ngOnInit(): void {
@@ -24,15 +19,14 @@ export default class ItemsListComponent implements OnInit {
     .subscribe((items) => this.itemsListNew = items);
     this.searchFormService.currentFilterValue
     .subscribe((value) => this.filterInputNew = value);
+    this.searchFormService.currentSortState
+    .subscribe((value) => this.sortStateNew = value);
   }
 
   itemsListNew?: SearchItem[];
   filterInputNew?: string;
-  
-  formInputNew?: string = this.filterService.getInputVal();
-  sortStateNew: SortState = this.filterService.getSortState();
+  sortStateNew?: SortState;
+
 
   title:string = '';
-
-
 }

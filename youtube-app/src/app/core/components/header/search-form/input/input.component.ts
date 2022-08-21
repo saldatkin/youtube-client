@@ -1,5 +1,5 @@
 import {
-  Component, EventEmitter, OnInit, Output,
+  Component, OnInit,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';

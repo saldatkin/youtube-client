@@ -1,7 +1,6 @@
 import {
-  Component, EventEmitter, OnInit, Output,
+  Component, OnInit,
 } from '@angular/core';
-import { SearchItem } from 'src/app/shared/models/search-item';
 import { SortState } from 'src/app/shared/models/sort-state';
 
 @Component({
@@ -11,11 +10,7 @@ import { SortState } from 'src/app/shared/models/sort-state';
 })
 export default class HeaderComponent implements OnInit {
   constructor() { }
-/*
-  @Output() outHeaderFormInput = new EventEmitter<string>();
 
-  @Output() outHeaderSortState = new EventEmitter<SortState>();
-*/
   isFiltersActive: boolean = false;
 
   formInput?: string;
@@ -28,15 +23,4 @@ export default class HeaderComponent implements OnInit {
   toggleFiltersDisplay() {
     this.isFiltersActive = !this.isFiltersActive;
   }
-/*
-   getFromInput(input: string) {
-    this.formInput = input;
-    this.outHeaderFormInput.emit(this.formInput);
-  }
-
-  getSortState(sortState: SortState) {
-    this.sortState = sortState;
-    this.outHeaderSortState.emit(this.sortState);
-  }
-  */
 }

@@ -1,7 +1,6 @@
 import {
-  Component, EventEmitter, OnInit, Output,
+  Component, OnInit,
 } from '@angular/core';
-import { FilterService } from 'src/app/core/services/filter.service';
 import { SearchFormService } from 'src/app/core/services/search-form.service';
 import { SortState } from 'src/app/shared/models/sort-state';
 
@@ -11,32 +10,37 @@ import { SortState } from 'src/app/shared/models/sort-state';
   styleUrls: ['./filters.component.scss'],
 })
 export default class FiltersComponent implements OnInit {
-  constructor(private filterService: FilterService,
+  constructor(
     private searchFormService: SearchFormService) {
   }
 
   ngOnInit(): void {
   }
-/*
-  @Output() outInputVal = new EventEmitter<string>();
 
-  @Output() outSortState = new EventEmitter<SortState>();
-*/
 
   filterInputVal?:string;
 
   sortState!: SortState;
 
 
-
   getOrder(sort: SortState): string {
-    return this.filterService
-    .getOrder(this.filterService.getSortState());
+    return sort === undefined || sort.order === 'desc'
+      ? 'asc'
+      : 'desc';
   }
 
   onSortButtonClick(type: string) {
-    return this.filterService.onSortButtonClick(type)
+    let sort: SortState = this.sortState;
+
+    sort = {
+      type,
+      order: this.getOrder(sort),
+    };
+
+    this.sortState = sort;
+    this.searchFormService.changeCurrentSortState(this.sortState);
   }
+
 
   onFilterInputChange(inputValue:string = '') {
     this.filterInputVal = inputValue;
