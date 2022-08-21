@@ -9,26 +9,26 @@ import { SortState } from 'src/app/shared/models/sort-state';
 })
 export default class MainComponent implements OnInit {
   constructor() { }
-
-  @Input() mainItemsList?: SearchItem[];
 /*
+  @Input() mainItemsList?: SearchItem[];
+
   @Input() formInput?: string;
 
   @Input() sortState?: SortState;
+
+
+  appItemsList?: SearchItem[];
 */
   ngOnInit(): void {
   }
-
-  appItemsList?: SearchItem[];
-
   formInput?: string;
 
   sortState?: SortState;
-
+/*
   setAppItems(value: SearchItem[]) {
     this.appItemsList = value;
   }
-
+*/
   sendFormInput(input: string) {
     this.formInput = input;
   }

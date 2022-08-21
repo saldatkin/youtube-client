@@ -12,8 +12,6 @@ import { SortState } from 'src/app/shared/models/sort-state';
 export default class HeaderComponent implements OnInit {
   constructor() { }
 /*
-  @Output() outHeaderResponse = new EventEmitter<SearchItem[]>();
-
   @Output() outHeaderFormInput = new EventEmitter<string>();
 
   @Output() outHeaderSortState = new EventEmitter<SortState>();
@@ -31,11 +29,7 @@ export default class HeaderComponent implements OnInit {
     this.isFiltersActive = !this.isFiltersActive;
   }
 /*
-  headerSendResponse(value: SearchItem[]) {
-    this.outHeaderResponse.emit(value);
-  }
-
-  getFromInput(input: string) {
+   getFromInput(input: string) {
     this.formInput = input;
     this.outHeaderFormInput.emit(this.formInput);
   }

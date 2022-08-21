@@ -2,6 +2,8 @@ import {
   Component, EventEmitter, OnInit, Output,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SearchFormService } from 'src/app/core/services/search-form.service';
 import { SearchItem } from 'src/app/shared/models/search-item';
 import { response } from 'src/app/shared/response';
 
@@ -11,21 +13,24 @@ import { response } from 'src/app/shared/response';
   styleUrls: ['./input.component.scss'],
 })
 export default class InputComponent implements OnInit {
-  constructor() { }
+  constructor(
+    private searchFormService: SearchFormService) { }
 
   responseItems: SearchItem[] = response.items;
 
   filterBy: any;
 
-  @Output() outSubmitForm = new EventEmitter<SearchItem[]>();
 
   ngOnInit(): void {
   }
 
+  changeSearchValue() {
+    this.searchFormService.changeCurrentSearchValue(this.responseItems);
+  }
+
   onSubmitForm(form: NgForm) {
-    const inputValue: string = form.value.searchInput;
-    if (inputValue !== '') {
-      this.outSubmitForm.emit(this.responseItems);
+    if(form.value.searchForm !== ''){
+      this.changeSearchValue();
     }
   }
 }

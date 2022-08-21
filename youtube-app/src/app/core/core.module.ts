@@ -9,7 +9,6 @@ import HeaderComponent from './components/header/header/header.component';
 import LoginBtnAreaComponent from './components/header/login-btn-area/login-btn-area.component';
 import LogoComponent from './components/header/logo/logo.component';
 import InputComponent from './components/header/search-form/input/input.component';
-import SubmitBtnComponent from './components/header/search-form/submit-btn/submit-btn.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import SubmitBtnComponent from './components/header/search-form/submit-btn/submi
     LoginBtnAreaComponent,
     LogoComponent,
     InputComponent,
-    SubmitBtnComponent,
   ],
   exports: [
     FilterBtnComponent,
@@ -28,7 +26,6 @@ import SubmitBtnComponent from './components/header/search-form/submit-btn/submi
     LoginBtnAreaComponent,
     LogoComponent,
     InputComponent,
-    SubmitBtnComponent,
   ],
   imports: [
     FormsModule,
