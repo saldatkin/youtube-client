@@ -1,7 +1,7 @@
 <div class="item-page_wrapper">
   <div class="item-card-block_wrapper">
       <button class="back-btn">
-          <img src="assets/arrow.svg" alt="arrow-back">
+          <img src="assets/arrow.svg" alt="arrow-back" (click) = goBack()>
       </button>
       <div class="item-card_wrapper">
         <img [src]="item.snippet.thumbnails.maxres.url" alt="" class="item-card_pic">

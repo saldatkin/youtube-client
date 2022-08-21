@@ -16,20 +16,21 @@ export default class InputComponent implements OnInit {
     private searchFormService: SearchFormService,
   ) { }
 
-  responseItems: SearchItem[] = response.items;
+  responseItems!: SearchItem[];
 
   filterBy: any;
 
   ngOnInit(): void {
   }
 
-  changeSearchValue() {
-    this.searchFormService.changeCurrentSearchValue(this.responseItems);
+  changeSearchValue(items: SearchItem[]) {
+    this.searchFormService.changeCurrentSearchValue(items);
   }
 
   onSubmitForm(form: NgForm) {
-    if (form.value.searchForm !== '') {
-      this.changeSearchValue();
+    if (form.value.searchInput !== '' && form.value.searchInput !== undefined) {
+      this.responseItems = response.items;
+      this.changeSearchValue(this.responseItems);
     }
   }
 }
