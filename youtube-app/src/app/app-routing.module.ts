@@ -15,13 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren:() => import('./youtube/youtube.module').then(m => m.YoutubeModule),
-    canLoad: [ LoginGuard ]
+    loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    canLoad: [LoginGuard],
   },
   {
     path: '**',
     component: Error404Component,
-  }
+  },
 ];
 
 @NgModule({

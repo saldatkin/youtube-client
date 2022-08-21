@@ -9,7 +9,7 @@ export default class ColorStripeComponent implements OnInit {
   constructor() { }
 
   @Input() datePublish?: string;
-  
+
   @Input() publishedDate?: string;
 
   publicationDate?: string;

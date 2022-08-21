@@ -25,11 +25,12 @@ export default class ItemComponent implements OnInit {
 
   @Input() item!: SearchItem;
 
-
   publishedDate?: string;
 
-  constructor(private router: Router,
-    private youtubeService: YoutubeService) { }
+  constructor(
+    private router: Router,
+    private youtubeService: YoutubeService,
+  ) { }
 
   ngOnInit(): void {
     this.publishedDate = this.item?.snippet.publishedAt;
@@ -39,8 +40,8 @@ export default class ItemComponent implements OnInit {
     return this.publishedDate;
   }
 
-  onMoreBtnClick(value:SearchItem){
+  onMoreBtnClick(value:SearchItem) {
     this.youtubeService.changeCurrentItem(this.item);
-    return this.router.navigate(['search/video', {v: value.id }]);
+    return this.router.navigate(['search/video', { v: value.id }]);
   }
 }

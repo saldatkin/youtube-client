@@ -1,6 +1,8 @@
 import {
   Component, OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/services/login.service';
 import { SortState } from 'src/app/shared/models/sort-state';
 
 @Component({
@@ -9,7 +11,10 @@ import { SortState } from 'src/app/shared/models/sort-state';
   styleUrls: ['./header.component.scss'],
 })
 export default class HeaderComponent implements OnInit {
-  constructor() { }
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+  ) { }
 
   isFiltersActive: boolean = false;
 
@@ -22,5 +27,11 @@ export default class HeaderComponent implements OnInit {
 
   toggleFiltersDisplay() {
     this.isFiltersActive = !this.isFiltersActive;
+  }
+
+  onLogoutClick() {
+    this.loginService.setLoginState('', false);
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 }

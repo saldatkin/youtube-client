@@ -1,6 +1,4 @@
 import { SearchResponse } from 'src/app/shared/models/search-response';
-import { SearchItem } from './models/search-item';
-
 
 // eslint-disable-next-line import/prefer-default-export
 export const response: SearchResponse = {
@@ -756,4 +754,4 @@ export const response: SearchResponse = {
   ],
 };
 
-export const items: SearchItem[] = response.items;
+export const { items } = response;

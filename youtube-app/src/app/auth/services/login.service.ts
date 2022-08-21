@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
+import { LoginState } from 'src/app/shared/models/login-state';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  loginState: LoginState = {
+    isLoggedIn: false,
+    login: '',
+    token: '',
+  };
 
-
-  isLoggedIn: boolean = true;
-  login: string = '';
   password: string = '';
-  token: string = '';
 
   constructor() { }
 
-  getLoginState(): boolean {
-    return this.isLoggedIn;
+  getLoginState(): LoginState {
+    return this.loginState;
   }
 
-  setLoginState(state: boolean) {
-    this.isLoggedIn = state;
-  }
-
-  setLogin(login: string) {
-    this.login = login;
+  setLoginState(login: string, isLoggedIn: boolean) {
+    this.loginState.isLoggedIn = isLoggedIn;
+    this.loginState.login = login;
+    this.loginState.token = this.createToken();
   }
 
   setPassword(password: string) {
@@ -30,12 +30,13 @@ export class LoginService {
   }
 
   createToken(): string {
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( let i = 0; i < this.login.length; i++ ) {
-      this.token += characters.charAt(Math.floor(Math.random() *
- charactersLength));
-   }
-    return this.token;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let token = '';
+    for (let i = 0; i < this.loginState.login.length; i += 1) {
+      token += characters.charAt(Math.floor(Math.random()
+    * charactersLength));
+    }
+    return token;
   }
 }

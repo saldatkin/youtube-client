@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SortState } from 'src/app/shared/models/sort-state';
 
 @Component({
@@ -11,6 +11,7 @@ export default class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   formInput?: string;
 
   sortState?: SortState;

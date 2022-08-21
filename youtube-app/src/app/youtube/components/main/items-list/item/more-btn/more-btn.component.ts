@@ -11,5 +11,4 @@ export default class MoreBtnComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

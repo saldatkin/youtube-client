@@ -11,9 +11,8 @@ const routes: Routes = [
   {
     path: 'video',
     component: CardDescriptionComponent,
-  }
+  },
 ];
-
 
 @NgModule({
   imports: [

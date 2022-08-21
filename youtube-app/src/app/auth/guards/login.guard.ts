@@ -3,17 +3,18 @@ import { CanLoad, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginGuard implements CanLoad {
-  constructor(private router: Router,
-    private loginService: LoginService){
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+  ) {
   }
 
-  isLoggedIn: boolean = this.loginService.getLoginState();
+  isLoggedIn: boolean = this.loginService.getLoginState().isLoggedIn;
 
-
-  canLoad(){
+  canLoad() {
     return this.isLoggedIn || this.router.navigateByUrl('/login');
   }
 }

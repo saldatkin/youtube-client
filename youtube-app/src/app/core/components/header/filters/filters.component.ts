@@ -11,17 +11,16 @@ import { SortState } from 'src/app/shared/models/sort-state';
 })
 export default class FiltersComponent implements OnInit {
   constructor(
-    private searchFormService: SearchFormService) {
+    private searchFormService: SearchFormService,
+  ) {
   }
 
   ngOnInit(): void {
   }
 
-
   filterInputVal?:string;
 
   sortState!: SortState;
-
 
   getOrder(sort: SortState): string {
     return sort === undefined || sort.order === 'desc'
@@ -40,7 +39,6 @@ export default class FiltersComponent implements OnInit {
     this.sortState = sort;
     this.searchFormService.changeCurrentSortState(this.sortState);
   }
-
 
   onFilterInputChange(inputValue:string = '') {
     this.filterInputVal = inputValue;
