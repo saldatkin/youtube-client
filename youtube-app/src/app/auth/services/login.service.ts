@@ -6,15 +6,26 @@ import { LoginState } from 'src/app/shared/models/login-state';
   providedIn: 'root',
 })
 export class LoginService {
+  
   loginState: LoginState = {
-    isLoggedIn: false || JSON.parse(`${localStorage.getItem('loginState')}`).isLoggedIn,
+    isLoggedIn: this.initLoggedValue(),
     login: '',
     token: '',
   };
 
+
+
   password: string = '';
 
   constructor() { }
+
+  initLoggedValue(){
+    if(localStorage.getItem('loginState') === null){
+      return false;
+    } else {
+      return JSON.parse(localStorage.getItem('loginState') + '').isLoggedIn;
+    }
+  }
 
   getLoginState(): LoginState {
     return this.loginState;

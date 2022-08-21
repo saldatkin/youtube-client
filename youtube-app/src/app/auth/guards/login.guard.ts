@@ -14,12 +14,9 @@ export class LoginGuard implements CanLoad {
 
   isLoggedIn?: boolean;
 
+
   canLoad() {
-    if (localStorage !== null) {
-      this.isLoggedIn = JSON.parse(`${localStorage.getItem('loginState')}`).isLoggedIn;
-    } else {
-      this.isLoggedIn = false;
-    }
+    this.isLoggedIn = this.loginService.getLoginState().isLoggedIn;
     return this.isLoggedIn || this.router.navigateByUrl('/login');
   }
 }
