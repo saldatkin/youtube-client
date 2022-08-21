@@ -7,7 +7,7 @@ import { LoginState } from 'src/app/shared/models/login-state';
 })
 export class LoginService {
   loginState: LoginState = {
-    isLoggedIn: false,
+    isLoggedIn: false || JSON.parse(`${localStorage.getItem('loginState')}`).isLoggedIn,
     login: '',
     token: '',
   };

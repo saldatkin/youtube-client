@@ -17,6 +17,7 @@ export default class LoginBtnAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.currentIsLogged.subscribe((value) => this.isLogged = value);
+    this.loginService.changeCurrentIsLogged(this.loginService.loginState.isLoggedIn);
   }
 
   onLogoutClick() {
