@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import SharedModule from '../shared/shared.module';
 
 import Error404Component from './components/error404/error404.component';
-import DetailsComponent from './components/details/details.component';
 import ItemComponent from './components/main/items-list/item/item/item.component';
 import ItemsListComponent from './components/main/items-list/items-list/items-list.component';
 import PictureComponent from './components/main/items-list/item/picture/picture.component';
@@ -19,12 +18,12 @@ import MainComponent from './components/main/main/main.component';
 import YoutubeRoutingModule from './youtube-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
+import CardDescriptionComponent from './components/card-description/card-description.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     Error404Component,
-    DetailsComponent,
     ItemsListComponent,
     ItemComponent,
     PictureComponent,
@@ -35,6 +34,7 @@ import { CoreModule } from '../core/core.module';
     MoreBtnComponent,
     ColorStripeComponent,
     TitleComponent,
+    CardDescriptionComponent,
   ],
   imports: [
     FormsModule,

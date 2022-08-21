@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SearchItem } from 'src/app/shared/models/search-item';
+import { YoutubeService } from 'src/app/youtube/services/youtube.service';
 
 @Component({
   selector: 'app-item',
@@ -21,11 +23,13 @@ export default class ItemComponent implements OnInit {
 
   @Input() itemDate?: string;
 
-  @Input() item?: SearchItem;
+  @Input() item!: SearchItem;
+
 
   publishedDate?: string;
 
-  constructor() { }
+  constructor(private router: Router,
+    private youtubeService: YoutubeService) { }
 
   ngOnInit(): void {
     this.publishedDate = this.item?.snippet.publishedAt;
@@ -33,5 +37,10 @@ export default class ItemComponent implements OnInit {
 
   getPublishedDate(): string | undefined {
     return this.publishedDate;
+  }
+
+  onMoreBtnClick(value:SearchItem){
+    this.youtubeService.changeCurrentItem(this.item);
+    return this.router.navigate(['search/video', {v: value.id }]);
   }
 }

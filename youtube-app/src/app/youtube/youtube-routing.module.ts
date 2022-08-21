@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import CardDescriptionComponent from './components/card-description/card-description.component';
 import ItemsListComponent from './components/main/items-list/items-list/items-list.component';
-import MainComponent from './components/main/main/main.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ItemsListComponent,
+  },
+  {
+    path: 'video',
+    component: CardDescriptionComponent,
   }
 ];
+
 
 @NgModule({
   imports: [

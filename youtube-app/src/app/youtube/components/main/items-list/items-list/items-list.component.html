@@ -1,6 +1,7 @@
 <div class="items-list">
   <app-item
    appBorderColor
+   [item]="item"
    [itemPicURL]="item.snippet.thumbnails.maxres.url"
    [itemViews]="item.statistics.viewCount"
    [itemLikes]="item.statistics.likeCount"
