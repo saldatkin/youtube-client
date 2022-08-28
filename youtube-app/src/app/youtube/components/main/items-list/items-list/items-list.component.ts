@@ -16,13 +16,13 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
     private searchFormService: SearchFormService,
   ) { }
 
-  items = this.searchFormService.searchResults;
+  items: SearchItem[] = [];
 
   filterInputNew?: string;
 
   sortStateNew?: SortState;
 
-  searchValue?: string;
+  searchValue?: string = '';
 
   title:string = '';
 
@@ -31,18 +31,21 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
       .subscribe((value) => this.filterInputNew = value);
     this.searchFormService.currentSortState$
       .subscribe((value) => this.sortStateNew = value);
-    this.searchFormService.currentSearchValue$
-      .subscribe((value) => this.searchValue = value);
+    // this.searchFormService.currentSearchValue$
+    //   .subscribe((value) => this.searchValue = value);
 
     const subscription: Subscription = this.getSearchValue$()
       .pipe(
-        switchMap<string, Observable< SearchItem[]>>(
+        switchMap<string, Observable<SearchItem[]>>(
           (val: string) => this.getSearchResults$(val),
         ),
       )
       .subscribe(
         (val: SearchItem[]) => {
+          this.items = val;
           this.responseItems.next(val);
+          console.log('items - '+val);
+
         },
       );
     this.subscriptions.add(subscription);
@@ -61,8 +64,6 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.searchFormService.currentFilterValue$.subscribe().unsubscribe();
-    this.searchFormService.currentSortState$.subscribe().unsubscribe();
-    this.searchFormService.currentSearchValue$.subscribe().unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }

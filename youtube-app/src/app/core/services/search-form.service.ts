@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
-  BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, Observable, switchMap,
+  BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, Observable, Subject, switchMap,
 } from 'rxjs';
 import { YOUTUBE_SEARCH_URL, YOUTUBE_VIDEOS_URL } from 'src/app/shared/constants';
 import { getParsedYTResponse, getYTResponseItemsIdList } from 'src/app/shared/helpers';
@@ -50,11 +50,9 @@ export class SearchFormService {
 
   searchResults: SearchItem[] = [];
 
-  searchValue: string = '';
 
-  private searchValue$$ = new BehaviorSubject<string>(this.searchValue);
+  private searchValue$$ = new Subject<string>();
 
-  currentSearchValue$ = this.searchValue$$.asObservable();// Observable
 
   changeCurrentSearchValue(val: string) {
     this.searchValue$$.next(val);
@@ -70,9 +68,7 @@ export class SearchFormService {
           },
         ),
         map(
-          (response: SearchResponse) => {
-            this.searchResults = getParsedYTResponse(response);
-          },
+          (response: SearchResponse) => this.searchResults = response.items,
         ),
       );
   }
@@ -92,7 +88,7 @@ export class SearchFormService {
   }
 
   getSearchValue$(): Observable<string> {
-    return this.currentSearchValue$
+    return this.searchValue$$.asObservable()
       .pipe(
         filter((v) => v.length > 2),
         debounceTime(700),

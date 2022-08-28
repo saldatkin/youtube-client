@@ -6,8 +6,8 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { SearchFormService } from './core/services/search-form.service';
 import { UrlKeyAdderInterceptor } from './youtube/interceptors/url-key-adder.interceptor';
-import { YoutubeService } from './youtube/services/youtube.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { YoutubeService } from './youtube/services/youtube.service';
     HttpClientModule,
   ],
   providers: [
-    YoutubeService,
+    SearchFormService,
     { provide: HTTP_INTERCEPTORS, useClass: UrlKeyAdderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

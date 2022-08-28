@@ -26,19 +26,9 @@ export default class InputComponent implements OnInit {
   searchInputUpdate = new Subject<string>();
 
   ngOnInit(): void {
-    this.searchInputUpdate
-      .pipe(
-        filter((value) => value.length > 2),
-        debounceTime(1500),
-        distinctUntilChanged(),
-      )
-      .subscribe((value) => {
-        this.searchFormService.searchValue = value;
-      });
   }
 
   onSearchInputChange(searchInput: string) {
-    this.searchInput = searchInput;
-    this.searchFormService.changeCurrentSearchValue(this.searchInput);
+    this.searchFormService.changeCurrentSearchValue(searchInput);
   }
 }
