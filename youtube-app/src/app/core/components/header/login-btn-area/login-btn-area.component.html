@@ -1,5 +1,5 @@
 <div class="login-area">
-  <p class="login-user-caption">{{ loginState!.login || 'Your name' }}</p>
+  <p class="login-user-caption">{{ loginState?.login || 'Your name' }}</p>
   <img class="login-img" src="/assets/user-vector.svg" alt="user">
   <button *ngIf="isLogged" class="logout_btn" (click)="onLogoutClick()">Logout</button>
 </div>
