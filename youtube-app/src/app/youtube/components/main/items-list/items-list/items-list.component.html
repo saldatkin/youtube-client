@@ -7,7 +7,9 @@
    [itemLikes]="item.statistics?.likeCount"
    [itemDislikes]="item.statistics?.dislikeCount"
    [itemComments]="item.statistics?.commentCount"
-   [itemTitle]="item.snippet.title"
+   [itemTitle]="item.snippet.title.length>=65
+     ?item.snippet.title.slice(0,65)+'...'
+     :item.snippet.title"
    [itemDate]="item.snippet.publishedAt"
    class="item"  *ngFor="let item of items | filter : filterInputNew | sort : sortStateNew"
   >

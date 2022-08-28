@@ -79,7 +79,7 @@ export class LoginService {
     this.changeCurrentIsLogged(this.loginState.isLoggedIn);
     this.searchResultItems = [];
     this.changeLoginState(this.loginState);
-    this.searchFormService.changeCurrentSearchValue('');//
+    this.searchFormService.changeCurrentSearchValue('');
     localStorage.clear();
     return this.router.navigate(['login']);
   }

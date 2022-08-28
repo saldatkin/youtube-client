@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/core/services/login.service';
 import { LoginState } from 'src/app/shared/models/login-state';
 
@@ -7,8 +8,10 @@ import { LoginState } from 'src/app/shared/models/login-state';
   templateUrl: './login-btn-area.component.html',
   styleUrls: ['./login-btn-area.component.scss'],
 })
-export default class LoginBtnAreaComponent implements OnInit {
+export default class LoginBtnAreaComponent implements OnInit, OnDestroy {
   isLogged?: boolean | undefined;
+
+  private subscriptions: Subscription[] = [];
 
   loginState?: LoginState;
 
@@ -17,19 +20,17 @@ export default class LoginBtnAreaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.isUserLoggedIn();
-    this.loginService.loginState$?.subscribe((value) => this.loginState = value);
-    this.loginService.currentIsLogged.subscribe((value) => this.isLogged = value);
+    this.subscriptions
+      .push(this.loginService.loginState$!.subscribe((value) => this.loginState = value));
+    this.subscriptions
+      .push(this.loginService.currentIsLogged.subscribe((value) => this.isLogged = value));
   }
-
-  // isUserLoggedIn() {
-  //   if(JSON.parse(`${localStorage.getItem('loginState')}`).isLoggedIn){
-
-  //     this.loginState = JSON.parse(`${localStorage.getItem('loginState')}`);
-  //   }
-  // }
 
   onLogoutClick(): Promise<boolean> {
     return this.loginService.onLogoutClick();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscr) => subscr.unsubscribe());
   }
 }
