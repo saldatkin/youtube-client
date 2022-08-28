@@ -2,7 +2,7 @@ import {
   Component, OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/auth/services/login.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { SortState } from 'src/app/shared/models/sort-state';
 
 @Component({

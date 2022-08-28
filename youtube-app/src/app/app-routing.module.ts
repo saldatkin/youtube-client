@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginGuard } from './auth/guards/login.guard';
+import { LoginGuard } from './core/guards/login.guard';
 import Error404Component from './youtube/components/error404/error404.component';
 
 const routes: Routes = [

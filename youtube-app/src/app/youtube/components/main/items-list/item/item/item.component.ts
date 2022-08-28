@@ -42,6 +42,12 @@ export default class ItemComponent implements OnInit {
 
   onMoreBtnClick(value:SearchItem) {
     this.youtubeService.changeCurrentItem(this.item);
-    return this.router.navigate(['search/video', { v: value.id }]);
+    return this.router.navigate(
+      ['search/video'],
+      {
+        queryParams: { v: value.id },
+        queryParamsHandling: 'merge',
+      },
+    );
   }
 }

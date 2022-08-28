@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { createToken } from 'src/app/shared/helpers';
 import { LoginState } from 'src/app/shared/models/login-state';
+import { SearchItem } from 'src/app/shared/models/search-item';
+import { SearchFormService } from './search-form.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +19,12 @@ export class LoginService {
 
   password: string = '';
 
-  constructor() { }
+  searchResultItems?: SearchItem[];
+
+  constructor(
+    private router: Router,
+    private searchFormService: SearchFormService,
+  ) { }
 
   initLoggedValue() {
     if (localStorage.getItem('loginState') === null) {
@@ -30,22 +40,18 @@ export class LoginService {
   setLoginState(login: string, isLoggedIn: boolean) {
     this.loginState.isLoggedIn = isLoggedIn;
     this.loginState.login = login;
-    this.loginState.token = this.createToken();
+    this.loginState.token = createToken();
   }
 
   setPassword(password: string) {
     this.password = password;
   }
 
-  createToken(): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let token = '';
-    for (let i = 0; i < this.loginState.login.length; i += 1) {
-      token += characters.charAt(Math.floor(Math.random()
-    * charactersLength));
-    }
-    return token;
+  onSubmitLoginForm(form: NgForm) {
+    this.setLoginState(form.value.loginInput, true);
+    localStorage.setItem('loginState', JSON.stringify(this.loginState));
+    this.changeCurrentIsLogged(this.loginState.isLoggedIn);
+    this.router.navigateByUrl('/search');
   }
 
   private isLoggedBehavSubject = new BehaviorSubject<boolean
@@ -55,5 +61,14 @@ export class LoginService {
 
   changeCurrentIsLogged(value: boolean | undefined) {
     this.isLoggedBehavSubject.next(value);
+  }
+
+  onLogoutClick(): Promise<boolean> {
+    this.setLoginState('', false);
+    this.changeCurrentIsLogged(this.loginState.isLoggedIn);
+    this.searchResultItems = [];
+    this.searchFormService.changeCurrentSearchValue('');//
+    localStorage.clear();
+    return this.router.navigate(['login']);
   }
 }

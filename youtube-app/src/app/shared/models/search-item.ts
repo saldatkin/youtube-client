@@ -1,9 +1,12 @@
 export interface SearchItem {
   kind: string,
   etag: string,
-  id: string,
+  id: {
+    kind: string,
+    videoId: string,
+  },
   snippet: ISnippet,
-  statistics: IStatistics
+  statistics?: IStatistics
 }
 
 export interface ISnippet {
@@ -15,12 +18,12 @@ export interface ISnippet {
     default: IThumbnail,
     medium: IThumbnail,
     high: IThumbnail,
-    standard: IThumbnail,
-    maxres: IThumbnail,
+    standard?: IThumbnail,
+    maxres?: IThumbnail,
   }
   channelTitle: string,
-  tags: string[];
-  categoryId: string,
+  tags?: Array<string>,
+  categoryId?: string,
   liveBroadcastContent: string,
   defaultLanguage?: string;
   localized: {
@@ -28,6 +31,7 @@ export interface ISnippet {
     description: string
   }
   defaultAudioLanguage: string,
+  publishTime?: string,
 }
 
 interface IThumbnail {
@@ -36,7 +40,7 @@ interface IThumbnail {
   height: number
 }
 
-interface IStatistics {
+export interface IStatistics {
   viewCount: string,
   likeCount: string,
   dislikeCount: string,

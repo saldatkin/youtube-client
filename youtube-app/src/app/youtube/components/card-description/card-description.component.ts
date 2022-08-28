@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchItem } from 'src/app/shared/models/search-item';
 import { YoutubeService } from '../../services/youtube.service';
@@ -8,7 +8,7 @@ import { YoutubeService } from '../../services/youtube.service';
   templateUrl: './card-description.component.html',
   styleUrls: ['./card-description.component.scss'],
 })
-export default class CardDescriptionComponent implements OnInit {
+export default class CardDescriptionComponent implements OnInit, OnDestroy {
   item!: SearchItem;
 
   dateItem!: Date;
@@ -21,7 +21,11 @@ export default class CardDescriptionComponent implements OnInit {
     this.dateItem = new Date(this.item.snippet.publishedAt);
   }
 
-  goBack() {
+  goBackFromDescription() {
     return this.router.navigate(['search']);
+  }
+
+  ngOnDestroy(): void {
+    this.youtubeService.currentItem.subscribe().unsubscribe();
   }
 }

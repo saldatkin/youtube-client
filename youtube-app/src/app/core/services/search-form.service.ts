@@ -1,41 +1,125 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, Observable, switchMap,
+} from 'rxjs';
+import { YOUTUBE_SEARCH_URL, YOUTUBE_VIDEOS_URL } from 'src/app/shared/constants';
+import { getParsedYTResponse, getYTResponseItemsIdList } from 'src/app/shared/helpers';
 import { SearchItem } from 'src/app/shared/models/search-item';
+import { SearchResponse } from 'src/app/shared/models/search-response';
 import { SortState } from 'src/app/shared/models/sort-state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchFormService {
-  searchResultItems?: SearchItem[];
+  public item!: SearchItem;
 
-  private behavSubjectItems = new BehaviorSubject<SearchItem[] | undefined>(this.searchResultItems);
+  public itemsSearchResults?: SearchItem[];
 
-  currentSearchValue = this.behavSubjectItems.asObservable();
+  public filterInput!: string;
 
-  filterInput?: string;
+  public sortState!: SortState;
 
-  private behavSubjectFilterValue = new BehaviorSubject<string | undefined>(this.filterInput);
+  private filteringValue$$ = new BehaviorSubject<string>(this.filterInput);
 
-  currentFilterValue = this.behavSubjectFilterValue.asObservable();
+  private sortState$$ = new BehaviorSubject<SortState>(this.sortState);
 
-  sortState?: SortState;
+  currentFilterValue$ = this.filteringValue$$.asObservable();
 
-  private behavSubjectSortState = new BehaviorSubject<SortState | undefined>(this.sortState);
+  currentSortState$ = this.sortState$$.asObservable();
 
-  currentSortState = this.behavSubjectSortState.asObservable();
+  private selectedItem$$ = new BehaviorSubject<SearchItem>(this.item);
 
-  constructor() { }
+  currentItem$ = this.selectedItem$$.asObservable();
 
-  changeCurrentSearchValue(value: SearchItem[]) {
-    this.behavSubjectItems.next(value);
+  changeCurrentItem(val: SearchItem) {
+    this.selectedItem$$.next(val);
   }
 
-  changeCurrentFilterValue(value: string) {
-    this.behavSubjectFilterValue.next(value);
+  changeCurrentFilterValue(val: string) {
+    this.filteringValue$$.next(val);
   }
 
-  changeCurrentSortState(value: SortState) {
-    this.behavSubjectSortState.next(value);
+  changeCurrentSortState(val: SortState) {
+    this.sortState$$.next(val);
+  }
+
+  constructor(private http: HttpClient) {
+  }
+
+  searchResults: SearchItem[] = [];
+
+  searchValue: string = '';
+
+  private searchValue$$ = new BehaviorSubject<string>(this.searchValue);
+
+  currentSearchValue$ = this.searchValue$$.asObservable();// Observable
+
+  changeCurrentSearchValue(val: string) {
+    this.searchValue$$.next(val);
+  }
+
+  getSearchResults$(val: string): Observable<any> {
+    return this.fetchSearchResults$(val)
+      .pipe(
+        switchMap(
+          (response: SearchResponse) => {
+            const searchIds: string = getYTResponseItemsIdList(response);
+            return this.fetchResultStats(searchIds);
+          },
+        ),
+        map(
+          (response: SearchResponse) => {
+            this.searchResults = getParsedYTResponse(response);
+          },
+        ),
+      );
+  }
+
+  getSearchResults(): SearchItem[] {
+    return this.searchResults;
+  }
+
+  fetchSearchResults$(val: string): Observable<SearchResponse> {
+    const urlForVideos: string = `${YOUTUBE_SEARCH_URL}?part=snippet&type=video&maxResults=12&q=${val}`;
+    return this.http.get<SearchResponse>(urlForVideos);
+  }
+
+  fetchResultStats(ids: string): Observable<SearchResponse> {
+    const urlForStats: string = `${YOUTUBE_VIDEOS_URL}?id=${ids}&part=snippet,statistics`;
+    return this.http.get<SearchResponse>(urlForStats);
+  }
+
+  getSearchValue$(): Observable<string> {
+    return this.currentSearchValue$
+      .pipe(
+        filter((v) => v.length > 2),
+        debounceTime(700),
+        distinctUntilChanged(),
+      );
+  }
+
+  getOrder(sort: SortState): string {
+    return sort === undefined || sort.order === 'desc'
+      ? 'asc'
+      : 'desc';
+  }
+
+  onSortButtonClick(type: string) {
+    let sort: SortState = this.sortState;
+
+    sort = {
+      type,
+      order: this.getOrder(sort),
+    };
+
+    this.sortState = sort;
+    this.changeCurrentSortState(this.sortState);
+  }
+
+  onFilterInputChange(inputValue:string = '') {
+    this.filterInput = inputValue;
+    this.changeCurrentFilterValue(this.filterInput);
   }
 }

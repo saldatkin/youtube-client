@@ -1,10 +1,10 @@
 <div class="item-page_wrapper">
   <div class="item-card-block_wrapper">
       <button class="back-btn">
-          <img src="assets/arrow.svg" alt="arrow-back" (click) = goBack()>
+          <img src="/assets/arrow.svg" alt="arrow-back" (click) = goBackFromDescription()>
       </button>
       <div class="item-card_wrapper">
-        <img [src]="item.snippet.thumbnails.maxres.url" alt="" class="item-card_pic">
+        <img [src]="item.snippet.thumbnails.high.url" alt="" class="item-card_pic">
         <div appBorderColor [item]="item" class="item-card-desc_wrapper">
           <div class="item-card-title_wrapper">
             <h2 class="item-card-heading">{{ item.snippet.title }}</h2>
@@ -13,20 +13,20 @@
           <p class="item-card_desc">{{ item.snippet.description | slice: 0:200 }}</p>
           <div class="item-card-stats">
             <div class="item-card-stats-views-count">
-              <img src="assets/views.svg" alt="" class="item-card-stats-ico">
-              <p class="item-card-stats-text">{{ item.statistics.viewCount }}</p>
+              <img src="/assets/views.svg" alt="" class="item-card-stats-ico">
+              <p class="item-card-stats-text">{{ item.statistics?.viewCount }}</p>
             </div>
             <div class="item-card-stats-likes-count">
               <img src="/assets/likes.svg" alt="" class="item-card-stats-ico">
-              <p class="item-card-stats-text">{{ item.statistics.likeCount }}</p>
+              <p class="item-card-stats-text">{{ item.statistics?.likeCount }}</p>
             </div>
             <div class="sitem-card-stats-dislikes-count">
               <img src="/assets/dislikes.svg" alt="" class="item-card-stats-ico">
-              <p class="item-card-stats-text">{{ item.statistics.dislikeCount }}</p>
+              <p class="item-card-stats-text">{{ item.statistics?.dislikeCount }}</p>
             </div>
             <div class="item-card-stats-comments-count">
               <img src="/assets/comments.svg" alt="" class="item-card-stats-ico">
-              <p class="item-card-stats-text">{{ item.statistics.commentCount }}</p>
+              <p class="item-card-stats-text">{{ item.statistics?.commentCount }}</p>
             </div>
         </div>
       </div>

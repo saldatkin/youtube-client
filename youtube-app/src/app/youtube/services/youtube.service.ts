@@ -1,12 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SearchItem } from 'src/app/shared/models/search-item';
+import { IStatistics, SearchItem } from 'src/app/shared/models/search-item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  statisticsArray: IStatistics[] = [];
+
+  idsArray: string[] = [];
 
   item!: SearchItem;
 
