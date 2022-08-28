@@ -1,9 +1,7 @@
 import {
   Component, OnInit,
 } from '@angular/core';
-import {
-  debounceTime, distinctUntilChanged, filter, Subject,
-} from 'rxjs';
+import { Subject } from 'rxjs';
 import { SearchFormService } from 'src/app/core/services/search-form.service';
 import { SearchItem } from 'src/app/shared/models/search-item';
 

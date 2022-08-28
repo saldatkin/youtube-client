@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { createToken } from 'src/app/shared/helpers';
 import { LoginState } from 'src/app/shared/models/login-state';
 import { SearchItem } from 'src/app/shared/models/search-item';
@@ -17,6 +17,14 @@ export class LoginService {
     token: '',
   };
 
+  loginState$?: Observable<LoginState>;
+
+  private loginState$$ = new BehaviorSubject<LoginState>(JSON.parse(`${localStorage.getItem('loginState')}`));
+
+  changeLoginState(loginState: LoginState) {
+    this.loginState$$.next(loginState);
+  }
+
   password: string = '';
 
   searchResultItems?: SearchItem[];
@@ -24,7 +32,9 @@ export class LoginService {
   constructor(
     private router: Router,
     private searchFormService: SearchFormService,
-  ) { }
+  ) {
+    this.loginState$ = this.loginState$$.asObservable();
+  }
 
   initLoggedValue() {
     if (localStorage.getItem('loginState') === null) {
@@ -34,7 +44,7 @@ export class LoginService {
   }
 
   getLoginState(): LoginState {
-    return this.loginState;
+    return JSON.parse(`${localStorage.getItem('loginState')}`);
   }
 
   setLoginState(login: string, isLoggedIn: boolean) {
@@ -50,6 +60,7 @@ export class LoginService {
   onSubmitLoginForm(form: NgForm) {
     this.setLoginState(form.value.loginInput, true);
     localStorage.setItem('loginState', JSON.stringify(this.loginState));
+    this.changeLoginState(this.loginState);
     this.changeCurrentIsLogged(this.loginState.isLoggedIn);
     this.router.navigateByUrl('/search');
   }
@@ -67,6 +78,7 @@ export class LoginService {
     this.setLoginState('', false);
     this.changeCurrentIsLogged(this.loginState.isLoggedIn);
     this.searchResultItems = [];
+    this.changeLoginState(this.loginState);
     this.searchFormService.changeCurrentSearchValue('');//
     localStorage.clear();
     return this.router.navigate(['login']);

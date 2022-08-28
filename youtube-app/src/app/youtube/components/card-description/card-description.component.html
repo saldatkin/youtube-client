@@ -10,7 +10,7 @@
             <h2 class="item-card-heading">{{ item.snippet.title }}</h2>
             <p class="item-card-publication-date_text">{{ item.snippet.publishedAt | date:'fullDate' }}</p>
           </div>
-          <p class="item-card_desc">{{ item.snippet.description | slice: 0:200 }}</p>
+          <p class="item-card_desc">{{ item.snippet.description | slice: 0:400 }}</p>
           <div class="item-card-stats">
             <div class="item-card-stats-views-count">
               <img src="/assets/views.svg" alt="" class="item-card-stats-ico">

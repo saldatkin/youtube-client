@@ -31,8 +31,6 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
       .subscribe((value) => this.filterInputNew = value);
     this.searchFormService.currentSortState$
       .subscribe((value) => this.sortStateNew = value);
-    // this.searchFormService.currentSearchValue$
-    //   .subscribe((value) => this.searchValue = value);
 
     const subscription: Subscription = this.getSearchValue$()
       .pipe(
@@ -44,8 +42,6 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
         (val: SearchItem[]) => {
           this.items = val;
           this.responseItems.next(val);
-          console.log('items - '+val);
-
         },
       );
     this.subscriptions.add(subscription);
@@ -53,7 +49,8 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
 
   private subscriptions = new Subscription();
 
-  public responseItems = new BehaviorSubject<SearchItem[]>(this.searchFormService.getSearchResults());
+  public responseItems = new BehaviorSubject<SearchItem[]>(this.searchFormService
+    .getSearchResults());
 
   getSearchValue$(): Observable<string> {
     return this.searchFormService.getSearchValue$();

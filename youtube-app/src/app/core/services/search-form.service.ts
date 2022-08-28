@@ -4,7 +4,7 @@ import {
   BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, Observable, Subject, switchMap,
 } from 'rxjs';
 import { YOUTUBE_SEARCH_URL, YOUTUBE_VIDEOS_URL } from 'src/app/shared/constants';
-import { getParsedYTResponse, getYTResponseItemsIdList } from 'src/app/shared/helpers';
+import { getYTResponseItemsIdList } from 'src/app/shared/helpers';
 import { SearchItem } from 'src/app/shared/models/search-item';
 import { SearchResponse } from 'src/app/shared/models/search-response';
 import { SortState } from 'src/app/shared/models/sort-state';
@@ -50,9 +50,7 @@ export class SearchFormService {
 
   searchResults: SearchItem[] = [];
 
-
   private searchValue$$ = new Subject<string>();
-
 
   changeCurrentSearchValue(val: string) {
     this.searchValue$$.next(val);
