@@ -1,0 +1,118 @@
+<div class="admin-page_wrapper">
+  <form #adminForm="ngForm"
+  (ngSubmit)="onSubmitAdminForm(adminForm)"
+  action=""
+  name="admin-form"
+  [formGroup]="adminFormGroup">
+    <div class="admin-form_wrapper">
+      <label for="admin-form" class="admin-form_heading">
+        Create new card
+      </label>
+
+      <label class="admin-form-input_text" for="titleInput">
+        Title</label>
+      <input class="admin-form_input"
+        type="text" ngModel
+        formControlName="titleInput"
+        placeholder="title">
+
+        <div *ngIf="title?.invalid && !title?.pristine" class="error-div-title-wrapper">
+          <div *ngIf="title?.errors?.['minlength']"
+            class="error-div error-div-title error-title-minlength">
+              The title is too short
+          </div>
+          <div *ngIf="title?.errors?.['maxlength']"
+            class="error-div error-div-title error-title-maxlength">
+              The title is too long
+          </div>
+          <div *ngIf="title?.errors?.['required']"
+            class="error-div error-div-title error-title-required">
+              Please, enter a title
+          </div>
+        </div>
+
+
+
+      <label class="admin-form-input_text" for="descriptionInput">
+        Description</label>
+      <input class="admin-form_input"
+        type="text" ngModel
+        formControlName="descriptionInput"
+        placeholder="description">
+
+        <div *ngIf="description?.invalid && !description?.pristine"
+          class="error-div-description-wrapper">
+          <div *ngIf="description?.errors?.['maxlength']"
+            class="error-div error-div-description error-description-maxlength">
+              The description is too long
+          </div>
+        </div>
+
+
+      <label class="admin-form-input_text" for="imgInput">
+        Image</label>
+      <input class="admin-form_input"
+        type="url" ngModel
+        formControlName="imgInput"
+        placeholder="img">
+
+        <div *ngIf="imageUrl?.invalid && !imageUrl?.pristine"
+          class="error-div-image-wrapper">
+            <div *ngIf="imageUrl?.errors?.['required']"
+              class="error-div error-div-image-url error-image-url-required">
+                Please enter a link to the image
+            </div>
+            <div *ngIf="imageUrl?.errors?.['pattern']"
+              class="error-div error-div-image error-image-url">
+                The image link is invalid
+            </div>
+        </div>
+
+
+
+
+      <label class="admin-form-input_text" for="videoInput">
+        Link on video</label>
+      <input class="admin-form_input"
+        type="url" ngModel
+        formControlName="videoInput"
+        placeholder="link on video">
+
+          <div *ngIf="videoUrl?.invalid && !videoUrl?.pristine"
+          class="error-div-video-wrapper">
+            <div *ngIf="videoUrl?.errors?.['required']"
+              class="error-div error-div-video-url error-video-url-required">
+                Please enter a link to the video
+            </div>
+            <div *ngIf="videoUrl?.errors?.['pattern']"
+              class="error-div error-div-video error-video-url">
+                The video link is invalid
+            </div>
+          </div>
+
+
+
+      <label class="admin-form-input_text" for="creationDateInput">
+        Creation date</label>
+      <input class="admin-form_input"
+        type="date" ngModel
+        formControlName="creationDateInput">
+
+        <div *ngIf="date?.invalid && !date?.pristine"
+        class="error-div-date-wrapper">
+          <div *ngIf="date?.errors?.['required']"
+            class="error-div error-div-date error-date-required">
+              Please enter a creation date
+          </div>
+          <div *ngIf="date?.errors?.['date']"
+            class="error-div error-div-date error-date-future">
+              The date is invalid
+          </div>
+        </div>
+
+
+      <button class="admin-form-submit_btn" type="submit">
+        Create card</button>
+    </div>
+  </form>
+</div>
