@@ -20,6 +20,7 @@ import YoutubeRoutingModule from './youtube-routing.module';
 import { CoreModule } from '../core/core.module';
 import CardDescriptionComponent from './components/card-description/card-description.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { DateCreationDirective } from './directives/date-creation.directive';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     TitleComponent,
     CardDescriptionComponent,
     AdminPageComponent,
+    DateCreationDirective,
   ],
   imports: [
     FormsModule,

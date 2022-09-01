@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormControl, FormGroup, FormGroupDirective, Validators,
+  FormControl, FormGroup, Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { dateCreationValidator } from '../../directives/date-creation.directive';
 
 @Component({
   selector: 'app-admin-page',
@@ -19,7 +20,9 @@ export class AdminPageComponent implements OnInit {
 
   REG: string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.adminFormGroup = new FormGroup({
@@ -42,12 +45,13 @@ export class AdminPageComponent implements OnInit {
       ]),
       creationDateInput: new FormControl('', [
         Validators.required,
+        dateCreationValidator(),
       ]),
     });
   }
 
-  onSubmitAdminForm(form: FormGroupDirective) {
-    return this.http.post('/admin', form.value);
+  onSubmitAdminForm() {
+    return this.router.navigate(['admin']);
   }
 
   get title() {

@@ -96,7 +96,8 @@
         Creation date</label>
       <input class="admin-form_input"
         type="date" ngModel
-        formControlName="creationDateInput">
+        formControlName="creationDateInput"
+        appDateCreation>
 
         <div *ngIf="date?.invalid && !date?.pristine"
         class="error-div-date-wrapper">
@@ -104,14 +105,14 @@
             class="error-div error-div-date error-date-required">
               Please enter a creation date
           </div>
-          <div *ngIf="date?.errors?.['date']"
+          <div *ngIf="date?.errors?.['forbidden']"
             class="error-div error-div-date error-date-future">
               The date is invalid
           </div>
         </div>
 
 
-      <button class="admin-form-submit_btn" type="submit">
+      <button [disabled]="!adminForm.valid" class="admin-form-submit_btn" type="submit">
         Create card</button>
     </div>
   </form>
