@@ -16,16 +16,16 @@
         formControlName="titleInput"
         placeholder="title">
 
-        <div *ngIf="title?.invalid && !title?.pristine" class="error-div-title-wrapper">
+        <div *ngIf="title?.invalid" class="error-div-title-wrapper">
           <div *ngIf="title?.errors?.['minlength']"
             class="error-div error-div-title error-title-minlength">
               The title is too short
           </div>
-          <div *ngIf="title?.errors?.['maxlength']"
+          <div *ngIf="title?.errors?.['maxlength'] && adminForm.submitted"
             class="error-div error-div-title error-title-maxlength">
               The title is too long
           </div>
-          <div *ngIf="title?.errors?.['required']"
+          <div *ngIf="title?.errors?.['required'] && adminForm.submitted"
             class="error-div error-div-title error-title-required">
               Please, enter a title
           </div>
@@ -40,7 +40,7 @@
         formControlName="descriptionInput"
         placeholder="description">
 
-        <div *ngIf="description?.invalid && !description?.pristine"
+        <div *ngIf="description?.invalid && description?.touched"
           class="error-div-description-wrapper">
           <div *ngIf="description?.errors?.['maxlength']"
             class="error-div error-div-description error-description-maxlength">
@@ -56,13 +56,13 @@
         formControlName="imgInput"
         placeholder="img">
 
-        <div *ngIf="imageUrl?.invalid && !imageUrl?.pristine"
+        <div *ngIf="imageUrl?.invalid"
           class="error-div-image-wrapper">
-            <div *ngIf="imageUrl?.errors?.['required']"
+            <div *ngIf="imageUrl?.errors?.['required'] && adminForm.submitted"
               class="error-div error-div-image-url error-image-url-required">
                 Please enter a link to the image
             </div>
-            <div *ngIf="imageUrl?.errors?.['pattern']"
+            <div *ngIf="imageUrl?.errors?.['pattern'] && adminForm.submitted"
               class="error-div error-div-image error-image-url">
                 The image link is invalid
             </div>
@@ -78,13 +78,13 @@
         formControlName="videoInput"
         placeholder="link on video">
 
-          <div *ngIf="videoUrl?.invalid && !videoUrl?.pristine"
+          <div *ngIf="videoUrl?.invalid"
           class="error-div-video-wrapper">
-            <div *ngIf="videoUrl?.errors?.['required']"
+            <div *ngIf="videoUrl?.errors?.['required'] && adminForm.submitted"
               class="error-div error-div-video-url error-video-url-required">
                 Please enter a link to the video
             </div>
-            <div *ngIf="videoUrl?.errors?.['pattern']"
+            <div *ngIf="videoUrl?.errors?.['pattern'] && adminForm.submitted"
               class="error-div error-div-video error-video-url">
                 The video link is invalid
             </div>
@@ -93,27 +93,29 @@
 
 
       <label class="admin-form-input_text" for="creationDateInput">
-        Creation date</label>
+        Creation date
+      </label>
       <input class="admin-form_input"
         type="date" ngModel
         formControlName="creationDateInput"
         appDateCreation>
 
-        <div *ngIf="date?.invalid && !date?.pristine"
+        <div *ngIf="date?.invalid"
         class="error-div-date-wrapper">
-          <div *ngIf="date?.errors?.['required']"
+          <div *ngIf="date?.errors?.['required'] && adminForm.submitted"
             class="error-div error-div-date error-date-required">
               Please enter a creation date
           </div>
-          <div *ngIf="date?.errors?.['forbidden']"
+          <div *ngIf="date?.errors?.['forbidden'] && adminForm.submitted"
             class="error-div error-div-date error-date-future">
               The date is invalid
           </div>
         </div>
 
 
-      <button [disabled]="!adminForm.valid" class="admin-form-submit_btn" type="submit">
-        Create card</button>
+      <button
+        class="admin-form-submit_btn" type="submit">
+          Create card</button>
     </div>
   </form>
 </div>

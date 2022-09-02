@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormControl, FormGroup, Validators,
+  FormControl, FormGroup, FormGroupDirective, Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { dateCreationValidator } from '../../directives/date-creation.directive';
@@ -16,7 +16,7 @@ export class AdminPageComponent implements OnInit {
     descriptionInput: FormControl<string | null>;
     imgInput: FormControl<string | null>;
     videoInput: FormControl<string | null>;
-    creationDateInput: FormControl<string | null>; }>;
+    creationDateInput: FormControl<Date | null>; }>;
 
   REG: string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -43,14 +43,19 @@ export class AdminPageComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.REG),
       ]),
-      creationDateInput: new FormControl('', [
+      creationDateInput: new FormControl(new Date(), [
         Validators.required,
         dateCreationValidator(),
       ]),
     });
   }
 
-  onSubmitAdminForm() {
+  onSubmitAdminForm(form: FormGroupDirective) {
+    if (form.valid) {
+      window.alert('Your card was succesfully saved in Local Storage'); // eslint-disable-line no-alert
+      localStorage.setItem('new-card', JSON.stringify(form.value));
+      form.resetForm();
+    }
     return this.router.navigate(['admin']);
   }
 
