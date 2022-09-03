@@ -12,7 +12,6 @@
   flex-direction: column;
   align-items: flex-start;
   width: 344px;
-  height: 248px;
   background-color: #f2f2f2;
   border-radius: 4px;
 }
@@ -60,4 +59,14 @@
 .login-form-submit_btn:hover {
   transform: scale(1.05);
   background-color: #5ea2ff;
+}
+
+form.ng-submitted{
+  input.ng-invalid {
+    border: 1px solid red;
+  }
+}
+
+.error-div {
+  color: red;
 }

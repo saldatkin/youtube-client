@@ -60,10 +60,12 @@
   transform: scale(1.05);
   background-color: #5ea2ff;
 }
-
-input.ng-invalid.ng-touched {
-  border: 1px solid red;
+form.ng-submitted{
+  input.ng-invalid {
+    border: 1px solid red;
+  }
 }
+
 .error-div {
   color: red;
 }

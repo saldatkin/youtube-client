@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroupDirective, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { createToken } from 'src/app/shared/helpers';
@@ -57,8 +57,8 @@ export class LoginService {
     this.password = password;
   }
 
-  onSubmitLoginForm(form: NgForm) {
-    this.setLoginState(form.value.loginInput, true);
+  onSubmitLoginForm(login: string) {
+    this.setLoginState(login, true);
     localStorage.setItem('loginState', JSON.stringify(this.loginState));
     this.changeLoginState(this.loginState);
     this.changeCurrentIsLogged(this.loginState.isLoggedIn);

@@ -18,7 +18,7 @@ export class AdminPageComponent implements OnInit {
     videoInput: FormControl<string | null>;
     creationDateInput: FormControl<Date | null>; }>;
 
-  REG: string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+  REG_URL: string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
   constructor(
     private router: Router,
@@ -37,11 +37,11 @@ export class AdminPageComponent implements OnInit {
       ),
       imgInput: new FormControl('', [
         Validators.required,
-        Validators.pattern(this.REG),
+        Validators.pattern(this.REG_URL),
       ]),
       videoInput: new FormControl('', [
         Validators.required,
-        Validators.pattern(this.REG),
+        Validators.pattern(this.REG_URL),
       ]),
       creationDateInput: new FormControl(new Date(), [
         Validators.required,
