@@ -16,7 +16,14 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
     private searchFormService: SearchFormService,
   ) { }
 
-  items: SearchItem[] = [];
+  items: SearchItem[] = this.getItems();
+
+  getItems(): SearchItem[] {
+    if (sessionStorage === null) {
+      return [];
+    }
+    return JSON.parse(sessionStorage.getItem('items-list')!);
+  }
 
   filterInputNew?: string;
 
@@ -41,6 +48,7 @@ export default class ItemsListComponent implements OnInit, OnDestroy {
       .subscribe(
         (val: SearchItem[]) => {
           this.items = val;
+          sessionStorage.setItem('items-list', JSON.stringify(this.items));
           this.responseItems.next(val);
         },
       );

@@ -16,8 +16,12 @@ export default class CardDescriptionComponent implements OnInit, OnDestroy {
   constructor(private youtubeService: YoutubeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.youtubeService.currentItem
-      .subscribe((value) => this.item = value);
+    if (this.item === undefined || this.item === null) {
+      this.item = JSON.parse(sessionStorage.getItem('current-item')!);
+    } else {
+      this.youtubeService.currentItem
+        .subscribe((value) => this.item = value);
+    }
     this.dateItem = new Date(this.item.snippet.publishedAt);
   }
 

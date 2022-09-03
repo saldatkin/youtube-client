@@ -80,6 +80,7 @@ export class LoginService {
     this.changeLoginState(this.loginState);
     this.searchFormService.changeCurrentSearchValue('');
     localStorage.clear();
+    sessionStorage.clear();
     return this.router.navigate(['login']);
   }
 }
