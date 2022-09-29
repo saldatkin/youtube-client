@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import SharedModule from '../shared/shared.module';
 
 import Error404Component from './components/error404/error404.component';
@@ -19,6 +19,8 @@ import MainComponent from './components/main/main/main.component';
 import YoutubeRoutingModule from './youtube-routing.module';
 import { CoreModule } from '../core/core.module';
 import CardDescriptionComponent from './components/card-description/card-description.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { DateCreationDirective } from './directives/date-creation.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import CardDescriptionComponent from './components/card-description/card-descrip
     ColorStripeComponent,
     TitleComponent,
     CardDescriptionComponent,
+    AdminPageComponent,
+    DateCreationDirective,
   ],
   imports: [
     FormsModule,
@@ -42,6 +46,7 @@ import CardDescriptionComponent from './components/card-description/card-descrip
     SharedModule,
     CoreModule,
     YoutubeRoutingModule,
+    ReactiveFormsModule,
   ],
 })
 export class YoutubeModule { }

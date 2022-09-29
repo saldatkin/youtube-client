@@ -8,6 +8,7 @@ import { SearchItem } from 'src/app/shared/models/search-item';
 })
 export default class BorderColorDirective implements OnInit {
   @Input() itemDate?: string;
+
   @Input() item?: SearchItem;
 
   dateP?: string;

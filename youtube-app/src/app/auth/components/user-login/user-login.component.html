@@ -1,12 +1,70 @@
 <div class="login-page_wrapper">
-  <form #loginForm="ngForm" (ngSubmit)="onSubmitLoginForm(loginForm)" action="" name="login-form">
+  <form #loginForm="ngForm"
+  (ngSubmit)="onSubmitLoginForm(loginForm)"
+  action=""
+  name="login-form"
+  [formGroup]="loginFormGroup">
     <div class="login-form_wrapper">
       <label for="login-form" class="login-form_heading">Login</label>
-      <label class="login-form-input_text" for="loginInput">login</label>
-      <input class="login-form_input" type="text" name="loginInput" ngModel>
-      <label class="login-form-input_text" for="passwordInput">password</label>
-      <input class="login-form_input" type="text" name="passwordInput" ngModel>
-      <button class="login-form-submit_btn" type="submit">Login</button>
+
+      <label
+        class="login-form-input_text"
+        for="loginInput">
+          login
+      </label>
+      <input class="login-form_input"
+        type="text"
+        formControlName="loginInput"
+        ngModel>
+
+        <div *ngIf="login?.invalid" class="error-div-password-wrapper">
+          <div *ngIf="password?.errors?.['required'] && loginForm.submitted"
+            class="error-div error-div-password error-login-required">
+              Please, enter a login email
+          </div>
+          <div *ngIf="login?.errors?.['email'] && loginForm.submitted"
+            class="error-div error-div-login error-login-email">
+              The login email is invalid
+          </div>
+        </div>
+
+
+
+      <label
+        class="login-form-input_text"
+        for="passwordInput">
+          password</label>
+      <input class="login-form_input"
+        id="pswrd"
+        type="password"
+        formControlName="passwordInput"
+        ngModel>
+
+        <div *ngIf="password?.invalid" class="error-div-password-wrapper">
+          <div *ngIf="password?.errors?.['minlength'] && loginForm.submitted"
+            class="error-div error-div-password error-password-minlength">
+              The password have to contain at least 8 symbols
+          </div>
+          <div *ngIf="password?.errors?.['pattern'] && loginForm.submitted"
+            class="error-div error-div-password error-password-pattern">
+              Your password isn't strong enough:<br>
+               - it must includes both uppercase and lowercase letters, <br>
+               - both letters and numbers, <br>
+               - at least one special character, e.g., ! @ $ % ^ & ( ) # ?
+          </div>
+          <div *ngIf="password?.errors?.['required'] && loginForm.submitted"
+            class="error-div error-div-password error-password-required">
+              Please, enter a password
+          </div>
+        </div>
+
+
+
+
+
+
+      <button class="login-form-submit_btn" type="submit">
+        Login</button>
     </div>
   </form>
 </div>

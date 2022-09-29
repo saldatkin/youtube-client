@@ -1,9 +1,9 @@
-.login-page_wrapper {
+.admin-page_wrapper {
   margin: 0 auto;
   width: 1200px;
 }
 
-.login-form_wrapper {
+.admin-form_wrapper {
   box-sizing: border-box;
   margin: 0 auto;
   margin-top: 45px;
@@ -16,20 +16,20 @@
   border-radius: 4px;
 }
 
-.login-form_heading {
+.admin-form_heading {
   margin-bottom: 11px;
   color: black;
   font-size: 18px;
   font-weight: 700;
 }
 
-.login-form-input_text {
+.admin-form-input_text {
   margin-left: 5px;
   font-size: 10px;
   color: #828282;
 }
 
-.login-form_input {
+.admin-form_input {
   box-sizing: border-box;
   margin: 5px 0;
   padding-left: 8px;
@@ -41,7 +41,7 @@
 
 }
 
-.login-form-submit_btn {
+.admin-form-submit_btn {
   margin-top: 22px;
   margin-bottom: 24px;
   width: 124px;
@@ -56,11 +56,10 @@
   transition: 0.3s;
 }
 
-.login-form-submit_btn:hover {
+.admin-form-submit_btn:hover {
   transform: scale(1.05);
   background-color: #5ea2ff;
 }
-
 form.ng-submitted{
   input.ng-invalid {
     border: 1px solid red;

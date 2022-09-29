@@ -1,23 +1,54 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormControl, FormGroup, FormGroupDirective, Validators,
+} from '@angular/forms';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.scss'],
 })
-export class UserLoginComponent {
+export class UserLoginComponent implements OnInit {
+  loginFormGroup!: FormGroup<{
+    loginInput: FormControl<string | null>;
+    passwordInput: FormControl<string | null>;
+  }>;
+
+  REG_PASSWORD: string = '^(?=.*[0-9])(?=.*[!@%?#$^&()])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{0,}$';
+
+  ngOnInit(): void {
+    this.loginFormGroup = new FormGroup({
+      loginInput: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      passwordInput: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(this.REG_PASSWORD),
+      ]),
+    });
+  }
+
   constructor(
     private loginService: LoginService,
-    private router: Router,
   ) { }
 
-  onSubmitLoginForm(form: NgForm) {
-    this.loginService.setLoginState(form.value.loginInput, true);
-    localStorage.setItem('loginState', JSON.stringify(this.loginService.loginState));
-    this.loginService.changeCurrentIsLogged(this.loginService.loginState.isLoggedIn);
-    this.router.navigateByUrl('/search');
+  onSubmitLoginForm(form: FormGroupDirective) {
+    if (form.valid) {
+      const login = form.form.value.loginInput;
+      localStorage.setItem('user', JSON.stringify(form.value));
+      form.resetForm();
+      this.loginService.onSubmitLoginForm(login);
+    }
+  }
+
+  get login() {
+    return this.loginFormGroup.get('loginInput');
+  }
+
+  get password() {
+    return this.loginFormGroup.get('passwordInput');
   }
 }
