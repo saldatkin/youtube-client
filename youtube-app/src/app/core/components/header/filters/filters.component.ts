@@ -1,5 +1,5 @@
 import {
-  Component, OnInit,
+  Component,
 } from '@angular/core';
 import { SearchFormService } from 'src/app/core/services/search-form.service';
 import { SortState } from 'src/app/shared/models/sort-state';
@@ -9,39 +9,24 @@ import { SortState } from 'src/app/shared/models/sort-state';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
 })
-export default class FiltersComponent implements OnInit {
+export default class FiltersComponent {
   constructor(
     private searchFormService: SearchFormService,
-  ) {
-  }
-
-  ngOnInit(): void {
-  }
+  ) { }
 
   filterInputVal?:string;
 
   sortState!: SortState;
 
   getOrder(sort: SortState): string {
-    return sort === undefined || sort.order === 'desc'
-      ? 'asc'
-      : 'desc';
+    return this.searchFormService.getOrder(sort);
   }
 
   onSortButtonClick(type: string) {
-    let sort: SortState = this.sortState;
-
-    sort = {
-      type,
-      order: this.getOrder(sort),
-    };
-
-    this.sortState = sort;
-    this.searchFormService.changeCurrentSortState(this.sortState);
+    this.searchFormService.onSortButtonClick(type);
   }
 
   onFilterInputChange(inputValue:string = '') {
-    this.filterInputVal = inputValue;
-    this.searchFormService.changeCurrentFilterValue(this.filterInputVal);
+    this.searchFormService.onFilterInputChange(inputValue);
   }
 }

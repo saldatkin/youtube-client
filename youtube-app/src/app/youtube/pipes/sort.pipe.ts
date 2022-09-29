@@ -31,9 +31,15 @@ export default class SortPipe implements PipeTransform {
     const o = sortState.order;
 
     if (t === 'views' && o === 'asc') {
-      result = itemsList.sort((a, b): number => +a.statistics.viewCount - +b.statistics.viewCount);
+      result = itemsList.sort((a, b): number => {
+        const subRes = +a.statistics!.viewCount - +b.statistics!.viewCount;
+        return subRes;
+      });
     } else if (t === 'views' && o === 'desc') {
-      result = itemsList.sort((a, b): number => +b.statistics.viewCount - +a.statistics.viewCount);
+      result = itemsList.sort((a, b): number => {
+        const subRes = +b.statistics!.viewCount - +a.statistics!.viewCount;
+        return subRes;
+      });
     } else if (t === 'date' && o === 'asc') {
       result = this.sortDate(itemsList);
     } else if (t === 'date' && o === 'desc') {

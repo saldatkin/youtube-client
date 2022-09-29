@@ -1,10 +1,9 @@
 import {
   Component, OnInit,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { SearchFormService } from 'src/app/core/services/search-form.service';
 import { SearchItem } from 'src/app/shared/models/search-item';
-import { response } from 'src/app/shared/response';
 
 @Component({
   selector: 'app-input',
@@ -20,17 +19,14 @@ export default class InputComponent implements OnInit {
 
   filterBy: any;
 
+  searchInput = '';
+
+  searchInputUpdate = new Subject<string>();
+
   ngOnInit(): void {
   }
 
-  changeSearchValue(items: SearchItem[]) {
-    this.searchFormService.changeCurrentSearchValue(items);
-  }
-
-  onSubmitForm(form: NgForm) {
-    if (form.value.searchInput !== '' && form.value.searchInput !== undefined) {
-      this.responseItems = response.items;
-      this.changeSearchValue(this.responseItems);
-    }
+  onSearchInputChange(searchInput: string) {
+    this.searchFormService.changeCurrentSearchValue(searchInput);
   }
 }
