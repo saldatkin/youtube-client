@@ -80,21 +80,20 @@
 
 .item-card_desc {
   height: 280px;
-  margin-top: 55px;
-  margin-bottom: 20px;
+  margin-top: 1.5rem;
   color: #828282;
   overflow-y: auto;
 }
 
 .item-card-stats {
-  margin: 0 auto;
+  margin: 1rem auto;
   display: flex;
   width: 202px;
   justify-content: space-between;
 
   div {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
   }
 }
 
