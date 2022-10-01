@@ -16,11 +16,12 @@
       count of views
     </button>
   </div>
-  <div class="div-filter">
+  <div class="div-filter filter">
     <p class="filter-link">
       word or sentence
     </p>
-    <input type="text"
+    <input class="filter-input"
+    type="text"
     [(ngModel)]="filterInputVal"
     (ngModelChange)="onFilterInputChange(filterInputVal)">
   </div>
