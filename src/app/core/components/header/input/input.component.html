@@ -1,0 +1,9 @@
+<form #searchForm="ngForm"  class="search-form" action="">
+  <input class="search-input"
+  name="searchInputName"
+  [(ngModel)]="searchInput"
+  (ngModelChange)="onSearchInputChange(searchInput)"
+  type="text"
+  placeholder="What are you want to find out?">
+</form>
+

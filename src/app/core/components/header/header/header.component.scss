@@ -1,0 +1,51 @@
+.wrapper{
+  width: 70rem;
+  height: 100%;
+  margin: 0 auto;
+}
+
+
+header{
+  height: 5rem;
+  background-color: #E5E5E5;
+
+  .header-wrapper{
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    .empty-space{
+      width: 10rem;
+    }
+    app-login-btn-area{
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .search-area{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-items: center;
+    app-logo{
+      justify-self: flex-end;
+    }
+    app-input{
+      height: 1.5rem;
+      border: none;
+    }
+    app-filter-btn{
+      justify-self: flex-start;
+    }
+  }
+  .login-area{
+    justify-self: flex-end;
+  }
+}
+
+
+.filters-wrapper{
+  margin: 0;
+  padding: 0;
+  background-color: #E5E5E5;
+}

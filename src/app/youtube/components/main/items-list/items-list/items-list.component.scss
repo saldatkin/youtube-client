@@ -1,0 +1,18 @@
+.items-list{
+  width: 70rem;
+  margin: 2rem auto;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.item{
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.9rem 0.9rem 0 0.9rem;
+  height: 23rem;
+  background-color: #e5e5e5;
+  border-bottom: 0.5rem solid;
+  border-radius: 1rem;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0 rgba(0, 0, 64, 0.5);
+}

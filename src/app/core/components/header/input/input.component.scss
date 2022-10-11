@@ -1,0 +1,32 @@
+.search-form{
+  height: 100%;
+  margin: 0 10px;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  .submit-btn{
+    width: 5rem;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:#2F80ED;
+    color: white;
+    border: none;
+    border-radius: 0 0.25rem 0.25rem 0;
+    cursor: pointer;
+    box-shadow: 0.1rem 0 0.2rem #2F80ED;
+    justify-items: center;
+    transition: 0.2s;
+  }
+  .submit-btn:hover {
+    background-color: #5EA2FF;
+  }
+}
+.search-input{
+  width: 27rem;
+  height: 100%;
+  padding: 0 0.2rem;
+  border: none;
+  background: #EFEFEF;
+  color: #929292;
+}
