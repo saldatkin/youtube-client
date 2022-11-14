@@ -1,13 +1,16 @@
 .login-area{
+  margin-left: 1rem;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
+
 .login-user-caption{
   margin-right: 0.5rem;
   font-size: 0.75rem;
 }
+
 .login-img{
   width: 1.5rem;
   height: 1.5rem;
@@ -16,14 +19,14 @@
 
 .logout_btn {
   box-sizing: border-box;
-  margin-left: 10px;
-  width: 80px;
-  height: 24px;
+  margin-left: 0.8rem;
+  width: 6rem;
+  height: 1.5rem;
   border: 0;
-  border-radius: 5px;
+  border-radius: 0.3rem;
   background-color: #2F80ED;
   color: white;
-  box-shadow: 2px 0px 4px #2F80ED;
+  box-shadow: 0.1rem 0 0.2rem #2F80ED;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -32,3 +35,94 @@
   transform: scale(1.05);
   background-color: #5ea2ff;
 }
+
+
+@media screen and (max-width:950px) {
+  .logout_btn {
+    height: 2rem;
+  }
+  
+  .login-img{
+    width: 2rem;
+    height: auto;
+  }
+}
+
+
+@media screen and (max-width:830px) {     
+  .login-user-caption{
+    font-size: 0.9rem;
+  }
+
+
+}
+
+
+@media screen and (max-width:700px) { 
+  .logout_btn {
+    margin-left: 0;
+    width: 7rem;
+  }
+  
+  .login-user-caption{
+    font-size: 0.9rem;
+  }
+}
+
+
+@media screen and (max-width:630px) {  
+  .login-img {
+    width: 3rem;
+    height: auto;
+  }
+  
+  .logout_btn {
+    width: 8.5rem;
+    height: 3rem;
+  }
+
+  .login-user-caption{
+    font-size: 1.2rem;
+  }
+}
+
+
+@media screen and (max-width:560px) { 
+  .login-img {
+    margin-right: 1.5rem;
+  }
+  
+  .login-user-caption{
+    margin-right: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .logout_btn {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 0.6rem;
+  }
+}
+
+
+@media screen and (max-width:440px) {     
+  .login-img {
+    margin-right: 2.5rem;
+    width: 4rem;
+    height: auto;
+  }
+  
+  .login-user-caption{
+    margin-right: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .logout_btn {
+    width: 15rem;
+    height: 4rem;
+  }
+}
+
+
+
+

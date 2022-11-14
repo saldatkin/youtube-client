@@ -16,6 +16,7 @@ The **main goal**:round_pushpin: of this task was to learn how to work with the 
 ### Technologies: 
 TypeScript, Angular, HTML, SCSS, Git.
 
-### Deploy link: 
-
-### App screenshot:
+### Deploy link:  
+**[Youtube Client](https://saldatkin-youtube.netlify.app)**
+### App screenshot:  
+![image](https://user-images.githubusercontent.com/97672745/195134834-5e1bd4eb-5ae4-41b9-86f9-e164847b633f.png)

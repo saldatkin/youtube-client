@@ -1,22 +1,29 @@
 .stats-div{
-  margin: 1.25rem 0;
-  display: grid;
-  grid-auto-flow: column;
-  justify-items: center;
+  margin-top: 1.25rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
   font-size: 0.75rem;
-  * {
+ 
+  .stats-wrap {
     display: flex;
+    align-items: center;
     height: 0.75rem;
+
+    img {
+      margin-right: 0.2rem;
+    }
   }
+
 }
-.more-btn{
+
+.more-btn {
   position: absolute;
   box-sizing: border-box;
   padding: 0;
   bottom: 0.8rem;
   width: 7rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
   height: 2rem;
   color: #fff;
   border: none;
@@ -32,3 +39,73 @@
   transform: scale(1.05);
   background-color: #5EA2FF;
 }
+
+
+@media screen and (max-width:1050px) {     
+  .stats-wrap {
+    font-size: 0.9rem;
+  }
+
+  .more-btn {
+    width: 9rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+
+@media screen and (max-width:700px) {   
+  .stats-wrap {
+    font-size: 1.3rem;
+  }
+
+  .more-btn {
+    margin-bottom: 1.5rem;
+    width: 13.5rem;
+    height: 3.3rem;
+    font-size: 1.5rem;
+  }
+}
+
+
+@media screen and (max-width:630px) { 
+  .stats-wrap {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .more-btn {
+    width: 17rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+}
+
+
+@media screen and (max-width:440px) {  
+  .stats-wrap {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .more-btn {
+    width: 17rem;
+    height: 4.5rem;
+    font-size: 2.2rem;
+  }
+}
+
+
+@media screen and (max-width:400px) { 
+  .stats-wrap {
+    margin-top: 3rem;
+    font-size: 2.2rem;
+  }
+
+  .more-btn {
+    width: 25rem;
+    height: 5.5rem;
+    font-size: 2.5rem;
+  }
+}
+

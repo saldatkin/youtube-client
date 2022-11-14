@@ -12,21 +12,17 @@ header{
   .header-wrapper{
     height: 100%;
     display: grid;
-    grid-auto-flow: column;
-    .empty-space{
-      width: 10rem;
-    }
+    grid-template-columns: 1fr 2fr 1fr;
     app-login-btn-area{
       margin: 0;
       padding: 0;
     }
   }
 
-  .search-area{
-    display: grid;
-    grid-auto-flow: column;
+  .search-area {
+    grid-column: 2;
+    display: flex;
     align-items: center;
-    justify-items: center;
     app-logo{
       justify-self: flex-end;
     }
@@ -43,9 +39,155 @@ header{
   }
 }
 
+.filter-btn {
+  justify-self: start;
+  display: flex;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.2rem;
+  border-bottom-right-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  background-color:#2F80ED;
+  border: none;
+  box-shadow: 0.1rem 0 0.2rem #2F80ED;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.filter-btn-vector {
+  width: 100%;
+  height: auto;
+}
+
+.filter-btn:hover {
+  transform: scale(1.05);
+  background-color: #5EA2FF;
+}
+
 
 .filters-wrapper{
   margin: 0;
   padding: 0;
   background-color: #E5E5E5;
 }
+
+
+@media screen and (max-width:950px) { 
+  header{
+    .search-area {
+      app-input { 
+        height: 2rem;
+      }
+    }
+  }
+
+  .filter-btn {
+    width: 2rem;
+    height: auto;
+  }
+
+}  
+
+
+@media screen and (max-width:830px) { 
+  header{
+    .header-wrapper{
+      box-sizing: border-box;
+      grid-template-columns: auto 1fr;
+    }
+
+    .search-area {
+      grid-column: 1;
+    }
+  }
+
+  .filter-btn {
+    width: 2rem;
+    height: auto;
+  }
+}
+
+
+@media screen and (max-width:830px) { 
+  .wrapper{
+    width: 100%;
+  }
+
+  header{
+    .header-wrapper{
+      box-sizing: border-box;
+      padding: 0 2rem;
+      width: 100%;
+    }
+  }
+}
+
+
+@media screen and (max-width:760px) {   
+  header {
+    height: 6rem;
+  }  
+}
+
+
+@media screen and (max-width:630px) {     
+  header {
+    height: 8rem;
+  }
+}
+
+
+@media screen and (max-width:630px) {   
+  header{
+    .search-area {
+      app-input { 
+        height: 3rem;
+      }
+    }
+
+    .filter-btn {
+      width: 3rem;
+      height: auto;
+    }
+  }
+}
+
+
+@media screen and (max-width:560px) {  
+  header{
+    height: 100%;
+    .header-wrapper{
+      padding: 1.5rem 3rem 1rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+
+    .search-area {
+      grid-row: 2;
+    }
+  }
+} 
+
+
+@media screen and (max-width:440px) {  
+  header{
+    .search-area {
+      app-input { 
+        height: 4rem;
+      }
+    }
+
+    .filter-btn {
+      width: 4rem;
+      height: auto;
+      padding: 0.3rem;
+      border-top-right-radius: 0.6rem;
+      border-bottom-right-radius: 0.6rem;
+    }
+  }
+}
+
+
